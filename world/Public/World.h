@@ -17,12 +17,14 @@ class World final : public Object {
     World &operator=(World &&) = delete;
     ~World() = default;
 
-    template <typename ObjectImpl>
-        requires std::derived_from<
-            ObjectImpl, Object>
+    template <typename Tp, typename... Args>
+        requires std::derived_from<Tp,
+                                   Object> &&
+                 std::constructible_from<
+                     Tp, Args...>
     [[nodiscard]] World &addObject() {
         objects_.emplace_back(
-            std::make_shared<ObjectImpl>());
+            std::make_shared<Tp>());
 
         return *this;
     }
