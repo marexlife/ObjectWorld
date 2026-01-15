@@ -1,13 +1,13 @@
 #include "World.h"
 
-#include <algorithm>
+#include <generator>
 #include <memory>
 
-namespace Game
+namespace game
 {
-namespace World
+namespace world
 {
-void World::Emerge()
+std::generator<std::monostate> World::Emerge()
 {
     while (true)
     {
@@ -30,5 +30,5 @@ void World::Tick()
     {
     }
 }
-} // namespace World
-} // namespace Game
+} // namespace world
+} // namespace game

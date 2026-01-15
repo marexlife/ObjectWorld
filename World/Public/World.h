@@ -1,21 +1,23 @@
 #pragma once
 
+#include <generator>
 #include <memory>
+#include <variant>
 #include <vector>
 
-namespace Game
+namespace game
 {
-namespace Player
+namespace player
 {
 class Player;
 }
 } // namespace Game
 
-namespace Game
+namespace game
 {
-namespace World
+namespace world
 {
-using Game::Player::Player;
+using game::player::Player;
 
 class World final
 {
@@ -33,7 +35,7 @@ class World final
     World &AddPlayer(
         std::shared_ptr<Player> &&player);
 
-    void Emerge();
+    std::generator<std::monostate> Emerge();
 
   private:
     void Tick();
