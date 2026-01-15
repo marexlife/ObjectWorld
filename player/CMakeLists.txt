@@ -5,6 +5,10 @@ add_library(${PROJECT_NAME}
     Private/Player.cpp
 )
 
+target_link_libraries(${PROJECT_NAME} PUBLIC
+    object
+)
+
 target_include_directories(${PROJECT_NAME} PUBLIC
     Public
 )
