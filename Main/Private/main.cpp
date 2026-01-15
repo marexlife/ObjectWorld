@@ -1,5 +1,6 @@
 #include "World.h"
 
-int main() {
-    world::World();
+int main()
+{
+    Game::World::World().Emerge();
 }

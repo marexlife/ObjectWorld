@@ -1,23 +1,44 @@
-#ifndef WORLD_H
-#define WORLD_H
+#pragma once
+
 #include <memory>
 #include <vector>
 
-namespace world {
-class World final {
-   public:
-    World() {}
+namespace Game
+{
+namespace Player
+{
+class Player;
+}
+} // namespace Game
 
-    World(const World&) = delete;
-    World& operator=(const World&) = delete;
-    World(World&&) = delete;
-    World& operator=(World&&) = delete;
+namespace Game
+{
+namespace World
+{
+using Game::Player::Player;
+
+class World final
+{
+  public:
+    World()
+    {
+    }
+
+    World(const World &) = delete;
+    World &operator=(const World &) = delete;
+    World(World &&) = delete;
+    World &operator=(World &&) = delete;
     ~World() = default;
+
+    World &AddPlayer(
+        std::shared_ptr<Player> &&player);
 
     void Emerge();
 
-   private:
+  private:
     void Tick();
+
+    std::vector<std::shared_ptr<Player>> players_;
 };
-}  // namespace world
-#endif
+} // namespace World
+} // namespace Game

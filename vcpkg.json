@@ -1,6 +1,7 @@
 {
     "name": "game",
     "dependencies": [
+        "magic-enum",
         "glad"
     ]
 }
