@@ -2,8 +2,6 @@
 
 #include <memory>
 
-#include "Object.h"
-
 namespace world {
 void World::Emerge() {
     while (true) {
@@ -11,7 +9,5 @@ void World::Emerge() {
     }
 }
 
-void World::Tick() {
-
-}
+void World::Tick() {}
 }  // namespace world
