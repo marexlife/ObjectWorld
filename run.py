@@ -2,4 +2,4 @@ from subprocess import run
 
 run(["cmake", ".", "-B", "build"])
 run(["cmake", "--build", "build"])
-run(["./build/Main"])
+run(["./build/Main/Main"])
