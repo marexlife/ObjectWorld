@@ -1,3 +1,5 @@
-int main() {
+#include "World.h"
 
+int main() {
+    world::World();
 }
