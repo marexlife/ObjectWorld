@@ -1,6 +1,7 @@
 #pragma once
 
 #include "object/Object.h"
+#include <concepts>
 #include <memory>
 #include <vector>
 
@@ -22,8 +23,14 @@ class World final : public Object {
     World &operator=(World &&) = delete;
     ~World() = default;
 
-    [[nodiscard]] World &addObject(
-        std::shared_ptr<Object> &&object);
+    template <std::derived_from<Object> Type>
+    [[nodiscard]] World &
+    addObject(Type &&object) {
+        objects_.emplace_back(
+            std::make_shared<Type>(object));
+
+        return *this;
+    }
 
     void emerge();
 

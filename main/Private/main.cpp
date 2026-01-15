@@ -10,7 +10,8 @@ int main() {
     auto p2 = std::make_shared<Player>();
 
     World()
-        .addObject(p1)
+        .addObject(
+            std::make_shared<Player>())
         .addObject(p2)
         .emerge();
 }
