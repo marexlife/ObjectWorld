@@ -4,6 +4,14 @@
 
 namespace game {
 namespace player {
-class Player : public object::Object {};
+using object::Object;
+
+class Player final : public Object {
+  public:
+    void emerge() override {}
+    void tick() override {
+        std
+    }
+};
 } // namespace player
 } // namespace game

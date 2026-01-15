@@ -10,16 +10,17 @@ void World::emerge() {
     }
 }
 
-World &World::addPlayer(
-    std::shared_ptr<Player> &&player) {
-    players_.emplace_back(std::move(player));
+World &World::addObject(
+    std::shared_ptr<Object> &&object) {
+    objects_.emplace_back(std::move(object));
 
     return *this;
 }
 
 void World::tick() {
-    for (std::shared_ptr<Player> &player :
-         players_) {
+    for (std::shared_ptr<Object> &object :
+         objects_) {
+        object->tick();
     }
 }
 } // namespace world
