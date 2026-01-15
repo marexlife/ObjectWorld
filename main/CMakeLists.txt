@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(Main)
+project(core)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 23)
@@ -10,7 +10,7 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    World
-    Object
-    Player
+    world
+    object
+    player
 )

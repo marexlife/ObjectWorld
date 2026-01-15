@@ -5,26 +5,19 @@
 #include <variant>
 #include <vector>
 
-namespace game
-{
-namespace player
-{
+namespace game {
+namespace player {
 class Player;
 }
-} // namespace Game
+} // namespace game
 
-namespace game
-{
-namespace world
-{
+namespace game {
+namespace world {
 using game::player::Player;
 
-class World final
-{
+class World final {
   public:
-    World()
-    {
-    }
+    World() {}
 
     World(const World &) = delete;
     World &operator=(const World &) = delete;
@@ -32,15 +25,15 @@ class World final
     World &operator=(World &&) = delete;
     ~World() = default;
 
-    World &AddPlayer(
-        std::shared_ptr<Player> &&player);
+    World &
+    addPlayer(std::shared_ptr<Player> &&player);
 
-    std::generator<std::monostate> Emerge();
+    std::generator<std::monostate> emerge();
 
   private:
-    void Tick();
+    void tick();
 
     std::vector<std::shared_ptr<Player>> players_;
 };
-} // namespace World
-} // namespace Game
+} // namespace world
+} // namespace game

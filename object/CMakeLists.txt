@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.30)
-project(Player)
+project(object)
 
 add_library(${PROJECT_NAME}
-    Private/Player.cpp
+    Private/Object.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
