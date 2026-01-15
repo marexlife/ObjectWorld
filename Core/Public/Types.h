@@ -7,6 +7,5 @@ namespace core
 class None final
 {
 };
-
 } // namespace core
 } // namespace game
