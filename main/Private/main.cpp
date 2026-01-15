@@ -1,5 +1,5 @@
-#include "World.h"
+#include "world/World.h"
 
-using game::world::World;
+using world::World;
 
 int main() { World().emerge(); }

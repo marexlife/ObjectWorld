@@ -1,6 +1,5 @@
 #pragma once
 
-namespace game {
 namespace object {
 class Object {
   public:
@@ -10,4 +9,3 @@ class Object {
     virtual ~Object() = default;
 };
 } // namespace object
-} // namespace game

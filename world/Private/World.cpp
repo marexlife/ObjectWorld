@@ -1,8 +1,7 @@
-#include "World.h"
+#include "world/World.h"
 
 #include <memory>
 
-namespace game {
 namespace world {
 void World::emerge() {
     while (true) {
@@ -24,4 +23,3 @@ void World::tick() {
     }
 }
 } // namespace world
-} // namespace game
