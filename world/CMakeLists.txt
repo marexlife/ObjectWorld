@@ -10,8 +10,8 @@ add_library(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    Object
-    Player
+    object
+    player
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
