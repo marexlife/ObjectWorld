@@ -9,7 +9,8 @@ add_library(${PROJECT_NAME}
     Private/World.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries(${PROJECT_NAME} PUBLIC
+    core
     object
     player
 )
