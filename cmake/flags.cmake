@@ -5,5 +5,4 @@ set(CMAKE_BUILD_TYPE Release)
 
 set(CUSTOM_FLAGS
     -O3
-    -fno-exceptions
 )

@@ -1,17 +1,11 @@
 #pragma once
 
-#include "object/Object.h"
+#include "Object.h"
 #include <concepts>
 #include <memory>
 #include <vector>
 
-namespace player {
 class Player;
-}
-
-namespace world {
-using object::Object;
-using player::Player;
 
 class World final : public Object {
   public:
@@ -23,11 +17,12 @@ class World final : public Object {
     World &operator=(World &&) = delete;
     ~World() = default;
 
-    template <std::derived_from<Object> Type>
-    [[nodiscard]] World &
-    addObject(Type &&object) {
+    template <typename ObjectImpl>
+        requires std::derived_from<
+            ObjectImpl, Object>
+    [[nodiscard]] World &addObject() {
         objects_.emplace_back(
-            std::make_shared<Type>(object));
+            std::make_shared<ObjectImpl>());
 
         return *this;
     }
@@ -40,4 +35,3 @@ class World final : public Object {
     std::vector<std::shared_ptr<Object>>
         objects_;
 };
-} // namespace world

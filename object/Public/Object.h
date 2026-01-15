@@ -1,6 +1,5 @@
 #pragma once
 
-namespace object {
 class Object {
   public:
     virtual void emerge() = 0;
@@ -8,4 +7,3 @@ class Object {
 
     virtual ~Object() = default;
 };
-} // namespace object
