@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "object/Object.h"
 
 namespace player {
 using object::Object;

@@ -1,12 +1,9 @@
 #pragma once
 
-#include "Object.h"
+#include "object/Object.h"
 #include <memory>
 #include <vector>
 
-namespace object {
-class Object;
-}
 namespace player {
 class Player;
 }
@@ -15,7 +12,7 @@ namespace world {
 using object::Object;
 using player::Player;
 
-class World final {
+class World final : public Object {
   public:
     World() {}
 
@@ -25,14 +22,15 @@ class World final {
     World &operator=(World &&) = delete;
     ~World() = default;
 
-    [[nodiscard]] World &
-    addObject(std::shared_ptr<Object> &&object);
+    [[nodiscard]] World &addObject(
+        std::shared_ptr<Object> &&object);
 
     void emerge();
 
   private:
     void tick();
 
-    std::vector<std::shared_ptr<Object>> objects_;
+    std::vector<std::shared_ptr<Object>>
+        objects_;
 };
 } // namespace world
