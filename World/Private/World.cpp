@@ -1,7 +1,8 @@
 #include "World.h"
 
-#include <initializer_list>
-#include <vector>
+#include <memory>
+
+#include "Object.h"
 
 namespace world {
 void World::Emerge() {
@@ -10,5 +11,10 @@ void World::Emerge() {
     }
 }
 
-void World::Tick() {}
+void World::Tick() {
+    for (std::shared_ptr<object::Object>& object :
+         objects_) {
+        object->Tick();
+    }
+}
 }  // namespace world

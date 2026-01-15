@@ -9,6 +9,10 @@ add_library(${PROJECT_NAME}
     Private/World.cpp
 )
 
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Object
+)
+
 target_include_directories(${PROJECT_NAME} PUBLIC
     Public
 )

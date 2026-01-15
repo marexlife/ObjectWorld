@@ -1,4 +1,6 @@
 {
     "name": "game",
-    "dependencies": []
+    "dependencies": [
+        "glad"
+    ]
 }
