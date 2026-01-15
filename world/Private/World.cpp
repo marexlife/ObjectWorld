@@ -1,11 +1,10 @@
 #include "World.h"
 
-#include <generator>
 #include <memory>
 
 namespace game {
 namespace world {
-std::generator<std::monostate> World::emerge() {
+void World::emerge() {
     while (true) {
         tick();
     }

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <generator>
 #include <memory>
-#include <variant>
 #include <vector>
 
 namespace game {
@@ -28,7 +26,7 @@ class World final {
     World &
     addPlayer(std::shared_ptr<Player> &&player);
 
-    std::generator<std::monostate> emerge();
+    void emerge();
 
   private:
     void tick();
