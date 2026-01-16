@@ -1,6 +1,10 @@
 #pragma once
 
+#include "Macros.h"
+
 class OObject {
+    OOBJECT(OObject)
+
   public:
     /// runs once at emerging of the object
     virtual void emerge() = 0;
