@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(game)
+project(oworld)
 
 add_subdirectory(main)
 add_subdirectory(object)
