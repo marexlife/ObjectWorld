@@ -9,8 +9,7 @@ void OWorld::emerge() {
 }
 
 void OWorld::tick() {
-    for (std::shared_ptr<OObject> &object :
-         objects_) {
+    for (std::shared_ptr<OObject> &object : objects_) {
         object->tick();
     }
 }
