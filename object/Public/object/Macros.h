@@ -14,6 +14,10 @@
     using This = OBJECT_NAME;                                        \
     using Super = BASE_OBJECT;                                       \
                                                                      \
+    [[nodiscard]] inline Super &super() {                            \
+        return static_cast<Super &>(*this);                          \
+    }                                                                \
+                                                                     \
   public:                                                            \
     virtual const char *getObjectName() override {                   \
         return #OBJECT_NAME;                                         \

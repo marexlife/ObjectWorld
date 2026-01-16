@@ -7,8 +7,8 @@ class PPlayer : public OObject {
     OOBJECT(PPlayer, OObject)
 
   public:
-    void emerge() override {}
-    void tick() override {}
+    void emerge() override { super().emerge(); }
+    void tick() override { super().tick(); }
 
     virtual ~PPlayer() override {}
 };
