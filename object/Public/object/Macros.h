@@ -14,8 +14,8 @@
     using This = OBJECT_NAME;                                        \
     using Super = BASE_OBJECT;                                       \
                                                                      \
-    [[nodiscard]] inline Super &super() {                            \
-        return static_cast<Super &>(*this);                          \
+    [[nodiscard]] inline Super *super() {                            \
+        return static_cast<Super *>(this);                           \
     }                                                                \
                                                                      \
   public:                                                            \

@@ -13,10 +13,10 @@ class OWorld final : public OObject {
 
   public:
     OWorld() {}
+    OWorld(OWorld &&) = default;
 
     OWorld(const OWorld &) = delete;
     OWorld &operator=(const OWorld &) = delete;
-    OWorld(OWorld &&) = delete;
     OWorld &operator=(OWorld &&) = delete;
     ~OWorld() = default;
 
@@ -30,11 +30,11 @@ class OWorld final : public OObject {
     template <typename Tp, typename... Args>
         requires std::derived_from<Tp, OObject> &&
                  std::constructible_from<Tp, Args...>
-    OWorld &addObject(Args... args) {
+    OWorld &&addObject(Args... args) {
         objects_.emplace_back(
             std::make_shared<Tp>(std::forward<Args>(args)...));
 
-        return *this;
+        return std::move(*this);
     }
 
     void emerge() override;

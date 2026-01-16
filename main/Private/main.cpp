@@ -6,12 +6,24 @@ class PPlayerCar : public PPlayer {
     OOBJECT(PPlayerCar, PPlayer)
 
   public:
-    void emerge() override { super().emerge(); }
-    void tick() override { super().tick(); }
+    void emerge() override {
+        std::println("{}: emerge", getObjectName());
+    }
+
+    void tick() override {
+        std::println("{}: tick", getObjectName());
+    }
 
     virtual ~PPlayerCar() = default;
 };
 
 int main() {
-    OWorld().addObject<PPlayerCar>().addObject<PPlayer>().emerge();
+    OWorld world =
+        OWorld().addObject<PPlayerCar>().addObject<PPlayer>();
+
+    while (true) {
+        world.tick();
+    }
+
+    world.emerge();
 }

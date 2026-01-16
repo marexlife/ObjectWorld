@@ -3,8 +3,8 @@
 #include <memory>
 
 void OWorld::emerge() {
-    while (true) {
-        tick();
+    for (std::shared_ptr<OObject> &object : objects_) {
+        object->emerge();
     }
 }
 
