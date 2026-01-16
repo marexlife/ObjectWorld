@@ -1,13 +1,17 @@
+#include "object/Macros.h"
 #include "player/Player.h"
 #include "world/World.h"
-#include <print>
+
+class PPlayerCar : public PPlayer {
+    OOBJECT(PPlayerCar, PPlayer)
+
+  public:
+    void emerge() override {}
+    void tick() override {}
+
+    virtual ~PPlayerCar() = default;
+};
 
 int main() {
-    OWorld world = OWorld();
-
-    world.addObject<OPlayer>().addObject<OPlayer>();
-
-    std::println("{}", world.getObjectName());
-
-    world.emerge();
+    OWorld().addObject<PPlayerCar>().addObject<PPlayer>().emerge();
 }

@@ -3,6 +3,7 @@
     "dependencies": [
         "wxwidgets",
         "magic-enum",
+        "spdlog",
         "glad"
     ]
 }

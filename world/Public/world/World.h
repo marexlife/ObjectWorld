@@ -6,10 +6,10 @@
 #include <utility>
 #include <vector>
 
-class OPlayer;
+class PPlayer;
 
 class OWorld final : public OObject {
-    OOBJECT(OWorld)
+    OOBJECT(OWorld, OObject)
 
   public:
     OWorld() {}

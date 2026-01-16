@@ -9,9 +9,10 @@
                                                                      \
   private:
 
-#define OOBJECT(OBJECT_NAME)                                         \
+#define OOBJECT(OBJECT_NAME, BASE_OBJECT)                            \
   private:                                                           \
     using This = OBJECT_NAME;                                        \
+    using Super = BASE_OBJECT;                                       \
                                                                      \
   public:                                                            \
     virtual const char *getObjectName() override {                   \

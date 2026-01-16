@@ -2,14 +2,13 @@
 
 #include "object/Macros.h"
 #include "object/Object.h"
-#include <print>
 
-class OPlayer final : public OObject {
-    OOBJECT(OPlayer)
+class PPlayer : public OObject {
+    OOBJECT(PPlayer, OObject)
 
   public:
     void emerge() override {}
     void tick() override {}
 
-    ~OPlayer() override {}
+    virtual ~PPlayer() override {}
 };
