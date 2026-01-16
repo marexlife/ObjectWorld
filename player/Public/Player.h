@@ -2,10 +2,10 @@
 
 #include "Object.h"
 
-class Player final : public Object {
+class OPlayer final : public OObject {
   public:
     void emerge() override {}
     void tick() override {}
 
-    ~Player() override {}
+    ~OPlayer() override {}
 };

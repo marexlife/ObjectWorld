@@ -2,14 +2,14 @@
 
 #include <memory>
 
-void World::emerge() {
+void OWorld::emerge() {
     while (true) {
         tick();
     }
 }
 
-void World::tick() {
-    for (std::shared_ptr<Object> &object :
+void OWorld::tick() {
+    for (std::shared_ptr<OObject> &object :
          objects_) {
         object->tick();
     }
