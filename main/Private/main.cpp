@@ -2,5 +2,8 @@
 #include "world/World.h"
 
 int main() {
-    OWorld().addObject<OPlayer>().emerge();
+    OWorld()
+        .addObject<OPlayer>()
+        .addObject<OPlayer>()
+        .emerge();
 }
