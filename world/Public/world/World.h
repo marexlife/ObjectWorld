@@ -9,6 +9,8 @@
 class OPlayer;
 
 class OWorld final : public OObject {
+    OOBJECT(OWorld)
+
   public:
     OWorld() {}
 
