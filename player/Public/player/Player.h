@@ -8,10 +8,10 @@ class PPlayer : public OObject {
 
   public:
     /// runs once at emerging of the object
-    void emerge() override { super()->emerge(); }
+    void emerge() override { Super::emerge(); }
 
     /// runs once per frame
-    void tick() override { super()->tick(); }
+    void tick() override { Super::tick(); }
 
     virtual ~PPlayer() override {}
 };

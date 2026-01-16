@@ -6,13 +6,9 @@ class PPlayerCar : public PPlayer {
     OOBJECT(PPlayerCar, PPlayer)
 
   public:
-    void emerge() override {
-        std::println("{}: emerge", getObjectName());
-    }
+    void emerge() override { Super::emerge(); }
 
-    void tick() override {
-        std::println("{}: tick", getObjectName());
-    }
+    void tick() override { Super::tick(); }
 
     virtual ~PPlayerCar() = default;
 };
