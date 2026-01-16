@@ -6,8 +6,8 @@ class PPlayerCar : public PPlayer {
     OOBJECT(PPlayerCar, PPlayer)
 
   public:
-    void emerge() override {}
-    void tick() override {}
+    void emerge() override { super().emerge(); }
+    void tick() override { super().tick(); }
 
     virtual ~PPlayerCar() = default;
 };
