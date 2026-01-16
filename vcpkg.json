@@ -1,6 +1,7 @@
 {
     "name": "game",
     "dependencies": [
+        "wxwidgets",
         "magic-enum",
         "glad"
     ]

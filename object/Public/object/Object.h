@@ -3,7 +3,7 @@
 #include "Macros.h"
 
 class OObject {
-    OOBJECT(OObject)
+    OOBJECT_ORIGIN(OObject)
 
   public:
     /// runs once at emerging of the object

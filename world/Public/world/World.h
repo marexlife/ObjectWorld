@@ -37,12 +37,9 @@ class OWorld final : public OObject {
         return *this;
     }
 
-    /// the game world emerges out of
-    /// all the pieces you gave to it
-    void emerge();
+    void emerge() override;
+    void tick() override;
 
   private:
-    void tick();
-
     std::vector<std::shared_ptr<OObject>> objects_;
 };
