@@ -6,19 +6,17 @@
 #include <utility>
 #include <vector>
 
-class PPlayer;
+class Player;
 
-class OWorld final : public OObject {
-    OOBJECT(OWorld, OObject)
-
+class World final : public Events {
   public:
-    OWorld() {}
-    OWorld(OWorld &&) = default;
+    World() {}
+    World(World &&) = default;
 
-    OWorld(const OWorld &) = delete;
-    OWorld &operator=(const OWorld &) = delete;
-    OWorld &operator=(OWorld &&) = delete;
-    ~OWorld() = default;
+    World(const World &) = delete;
+    World &operator=(const World &) = delete;
+    World &operator=(World &&) = delete;
+    ~World() = default;
 
     /// A chainable method for creating a new
     /// object and adding it to the world
@@ -28,9 +26,9 @@ class OWorld final : public OObject {
     /// the world object to further chain
     /// methods on or store it.
     template <typename Tp, typename... Args>
-        requires std::derived_from<Tp, OObject> &&
+        requires std::derived_from<Tp, Events> &&
                  std::constructible_from<Tp, Args...>
-    OWorld &&addObject(Args... args) {
+    World &&addObject(Args... args) {
         objects_.emplace_back(
             std::make_shared<Tp>(std::forward<Args>(args)...));
 
@@ -41,5 +39,5 @@ class OWorld final : public OObject {
     void tick() override;
 
   private:
-    std::vector<std::shared_ptr<OObject>> objects_;
+    std::vector<std::shared_ptr<Events>> objects_;
 };

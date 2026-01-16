@@ -1,19 +1,21 @@
 #pragma once
 
-#include "Macros.h"
-#include <print>
+#include <string_view>
 
-class OObject {
-    OOBJECT_ORIGIN(OObject)
+class Name {
+  public:
+    [[nodiscard]] virtual std::string_view getObjectName() const = 0;
 
+    virtual ~Name() = default;
+};
+
+class Events {
   public:
     /// runs once at emerging of the object
-    virtual void emerge() {
-        std::println("{}: emerge", getObjectName());
-    }
+    virtual void emerge() = 0;
 
     /// runs once per frame
-    virtual void tick() { std::println("{}: tick", getObjectName()); }
+    virtual void tick() = 0;
 
-    virtual ~OObject() = default;
+    virtual ~Events() = default;
 };

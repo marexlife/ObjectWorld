@@ -4,7 +4,11 @@ project(app)
 include(${CMAKE_SOURCE_DIR}/cmake/flags.cmake)
 
 add_library(${PROJECT_NAME}
-    Private/Object.cpp
+    Private/App.cpp
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    world
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC

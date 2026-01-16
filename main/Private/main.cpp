@@ -1,21 +1,16 @@
-#include "object/Macros.h"
+#include "object/Object.h"
 #include "player/Player.h"
 #include "world/World.h"
 
-class PPlayerCar : public PPlayer {
-    OOBJECT(PPlayerCar, PPlayer)
-
+class PlayerCar final : public Events {
   public:
-    void emerge() override { Super::emerge(); }
+    void emerge() override {}
 
-    void tick() override { Super::tick(); }
-
-    virtual ~PPlayerCar() = default;
+    void tick() override {}
 };
 
 int main() {
-    OWorld world =
-        OWorld().addObject<PPlayerCar>().addObject<PPlayer>();
+    World world = World().addObject<PlayerCar>().addObject<Player>();
 
     while (true) {
         world.tick();

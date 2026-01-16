@@ -1,17 +1,19 @@
 #pragma once
 
-#include "object/Macros.h"
 #include "object/Object.h"
+#include <string_view>
 
-class PPlayer : public OObject {
-    OOBJECT(PPlayer, OObject)
-
-  public:
+class Player final : public Name, public Events {
+  private:
     /// runs once at emerging of the object
-    void emerge() override { Super::emerge(); }
+    void emerge() override {}
 
     /// runs once per frame
-    void tick() override { Super::tick(); }
+    void tick() override {}
 
-    virtual ~PPlayer() override {}
+    std::string_view getObjectName() const override {
+        return "Player";
+    }
+
+    ~Player() override {}
 };
