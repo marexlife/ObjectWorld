@@ -4,7 +4,7 @@ project(window)
 include(${CMAKE_SOURCE_DIR}/cmake/flags.cmake)
 
 add_library(${PROJECT_NAME}
-Private/Window.cpp
+    Private/Window.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
