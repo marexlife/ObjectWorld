@@ -1,0 +1,6 @@
+{
+    "name": "oworld",
+    "dependencies": [
+        "wxwidgets"
+    ]
+}
