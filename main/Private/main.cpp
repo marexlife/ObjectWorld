@@ -1,3 +1,3 @@
 #include "app/App.h"
 
-int main() { App().run(); }
+int main() { App{}.run(); }
