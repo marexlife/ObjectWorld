@@ -4,6 +4,9 @@
 #include <string_view>
 
 class Player final : public Name, public Events {
+  public:
+    ~Player() override {}
+
   private:
     /// runs once at emerging of the object
     void emerge() override {}
@@ -14,6 +17,4 @@ class Player final : public Name, public Events {
     std::string_view getObjectName() const override {
         return "Player";
     }
-
-    ~Player() override {}
 };
