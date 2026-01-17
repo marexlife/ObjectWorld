@@ -7,7 +7,7 @@ add_library(${PROJECT_NAME}
     Private/App.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE
+target_link_libraries(${PROJECT_NAME} PUBLIC
     window
     world
 )

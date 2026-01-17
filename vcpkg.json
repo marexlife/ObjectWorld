@@ -1,9 +1,5 @@
 {
     "name": "game",
     "dependencies": [
-        "wxwidgets",
-        "magic-enum",
-        "spdlog",
-        "glad"
     ]
 }
