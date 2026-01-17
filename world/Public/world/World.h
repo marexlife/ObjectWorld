@@ -26,13 +26,12 @@ class World final : public Events {
     /// the world object to further chain
     /// methods on or store it.
     template <typename Tp, typename... Args>
-        requires std::derived_from<Tp, Events> &&
-                 std::constructible_from<Tp, Args...>
-    World &&addObject(Args... args) {
+        requires std::derived_from<Events, Tp>
+    World &addObject(Args... args) {
         objects_.emplace_back(
             std::make_shared<Tp>(std::forward<Args>(args)...));
 
-        return std::move(*this);
+        return *this;
     }
 
     void emerge() override;

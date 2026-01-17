@@ -4,8 +4,10 @@
 
 class App final {
   public:
+    App() : world_{} {}
+
     void run();
 
   private:
-    World world_;
+    World world_{};
 };
