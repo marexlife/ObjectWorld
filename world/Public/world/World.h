@@ -26,7 +26,8 @@ class World final : public Events {
     /// the world object to further chain
     /// methods on or store it.
     template <typename Tp, typename... Args>
-        requires std::derived_from<Events, Tp>
+        requires std::destructible<Tp> &&
+                 std::derived_from<Tp, Events>
     World &addObject(Args... args) {
         objects_.emplace_back(
             std::make_shared<Tp>(std::forward<Args>(args)...));
