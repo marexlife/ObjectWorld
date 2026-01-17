@@ -10,7 +10,7 @@ class Player;
 
 class World final : public Events {
   public:
-    World() {}
+    World() : objects_{} {}
     World(World &&) = default;
 
     World(const World &) = delete;
@@ -38,5 +38,5 @@ class World final : public Events {
     void tick() override;
 
   private:
-    std::vector<std::shared_ptr<Events>> objects_;
+    std::vector<std::shared_ptr<Events>> objects_{};
 };
