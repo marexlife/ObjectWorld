@@ -27,6 +27,19 @@ class App final {
         return *this;
     }
 
+    /// A chainable method for creating a new
+    /// object and adding it to the world
+    /// @arg arguments you can give to to
+    /// create your object, e.g. a player
+    /// @return gives you back a reference to
+    /// the world object to further chain
+    /// methods on or store it.
+    template <typename Tp> App &addObject(std::unique_ptr<Tp> &&tp) {
+        events_.emplace_back(std::move(tp));
+
+        return *this;
+    }
+
     void run();
 
   private:
