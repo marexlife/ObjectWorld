@@ -1,6 +1,6 @@
 {
     "name": "oworld",
     "dependencies": [
-        "sdl3"
+        "sdl2"
     ]
 }
