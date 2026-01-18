@@ -4,6 +4,8 @@
 #include <memory>
 #include <vector>
 
+namespace oworld
+{
 class Events;
 
 class App final
@@ -13,7 +15,7 @@ class App final
     {
         return App();
     }
-    
+
     /// A chainable method for creating a new
     /// object and adding it to the world
     /// @arg arguments you can give to to
@@ -37,3 +39,4 @@ class App final
     {
     }
 };
+} // namespace oworld

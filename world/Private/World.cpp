@@ -2,6 +2,8 @@
 
 #include <memory>
 
+namespace oworld
+{
 void World::Emerge()
 {
     for (std::shared_ptr<Events> &object : events_)
@@ -17,3 +19,4 @@ void World::Tick()
         object->Tick();
     }
 }
+} // namespace oworld

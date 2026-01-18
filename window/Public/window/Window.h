@@ -7,9 +7,8 @@
 
 #include "object/Events.h"
 
-struct SDL_Window;
-struct SDL_Renderer;
-
+namespace oworld
+{
 class Window final : public Events
 {
   public:
@@ -43,3 +42,4 @@ class Window final : public Events
     {
     }
 };
+} // namespace oworld

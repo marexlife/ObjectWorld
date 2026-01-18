@@ -1,5 +1,7 @@
 #pragma once
 
+namespace oworld
+{
 class Events
 {
   public:
@@ -13,3 +15,4 @@ class Events
     {
     }
 };
+} // namespace oworld

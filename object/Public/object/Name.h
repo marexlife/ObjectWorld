@@ -2,6 +2,8 @@
 
 #include <string_view>
 
+namespace oworld
+{
 class Name
 {
   public:
@@ -9,3 +11,4 @@ class Name
 
     virtual ~Name() = default;
 };
+} // namespace oworld

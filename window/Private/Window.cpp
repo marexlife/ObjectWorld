@@ -6,6 +6,8 @@
 #include <SDL_video.h>
 #include <memory>
 
+namespace oworld
+{
 std::expected<std::unique_ptr<Window>, std::string_view> Window::
     TryCreate(int width, int height, std::uint32_t windowFlags)
 {
@@ -54,3 +56,4 @@ Window::~Window()
     SDL_DestroyWindow(window_);
     SDL_Quit();
 }
+} // namespace oworld

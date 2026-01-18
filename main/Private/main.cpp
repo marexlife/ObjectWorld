@@ -9,14 +9,18 @@
 
 int main()
 {
-    std::unique_ptr<World> world = std::make_unique<World>();
+    std::unique_ptr<oworld::World> world =
+        std::make_unique<oworld::World>();
 
-    world->AddObject<Player>();
+    world->AddObject<oworld::Player>();
 
-    if (std::expected<std::unique_ptr<Window>, std::string_view>
-            windowResult = Window::TryCreate(1000, 1000))
+    if (std::expected<std::unique_ptr<oworld::Window>,
+                      std::string_view>
+            windowResult = oworld::Window::TryCreate(1000, 1000))
     {
-        App::Create().AddObject<World>(std::move(world)).Run();
+        oworld::App::Create()
+            .AddObject<oworld::World>(std::move(world))
+            .Run();
     }
     else
     {

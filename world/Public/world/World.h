@@ -6,6 +6,8 @@
 #include <utility>
 #include <vector>
 
+namespace oworld
+{
 class Player;
 
 class World final : public Events
@@ -46,3 +48,4 @@ class World final : public Events
   private:
     std::vector<std::shared_ptr<Events>> events_{};
 };
+} // namespace oworld
