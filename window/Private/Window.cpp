@@ -4,6 +4,7 @@
 #include <SDL_events.h>
 #include <SDL_render.h>
 #include <SDL_video.h>
+#include <expected>
 #include <memory>
 
 namespace oworld
@@ -21,8 +22,13 @@ std::expected<std::unique_ptr<Window>, std::string_view> Window::
         return std::unexpected(SDL_GetError());
     }
 
-    SDL_CreateWindowAndRenderer(width, height, windowFlags, &window,
-                                &renderer);
+    int creationErr = SDL_CreateWindowAndRenderer(
+        width, height, windowFlags, &window, &renderer);
+
+    if (creationErr != 0)
+    {
+        return std::unexpected(SDL_GetError());
+    }
 
     SDL_ShowWindow(window);
 
@@ -44,7 +50,7 @@ void Window::Tick()
         switch (event->type)
         {
         case SDL_QUIT:
-            windowShouldClose_();
+            windowShouldClose_.Fire();
             break;
         default:
             break;
