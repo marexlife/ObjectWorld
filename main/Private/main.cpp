@@ -1,3 +1,4 @@
+#include "main.h"
 #include "app/App.h"
 #include "player/Player.h"
 #include "window/Window.h"
