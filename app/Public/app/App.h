@@ -34,10 +34,8 @@ class App final
 
   private:
     std::vector<std::unique_ptr<Events>> events_{};
-    bool shouldRun_;
+    bool shouldRun_{true};
 
-    App()
-    {
-    }
+    App() = default;
 };
 } // namespace oworld
