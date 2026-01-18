@@ -3,14 +3,18 @@
 
 #include <memory>
 
-void World::emerge() {
-    for (std::shared_ptr<Events> &object : events_) {
-        object->emerge();
+void World::Emerge()
+{
+    for (std::shared_ptr<Events> &object : events_)
+    {
+        object->Emerge();
     }
 }
 
-void World::tick() {
-    for (std::shared_ptr<Events> &object : events_) {
-        object->tick();
+void World::Tick()
+{
+    for (std::shared_ptr<Events> &object : events_)
+    {
+        object->Tick();
     }
 }

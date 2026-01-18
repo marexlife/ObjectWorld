@@ -4,13 +4,14 @@
 #include "world/World.h"
 #include <memory>
 
-int main() {
+int main()
+{
     std::unique_ptr<World> world = std::make_unique<World>();
 
-    world->addObject<Player>();
+    world->AddObject<Player>();
 
-    App{}
-        .addObject<World>(std::move(world))
-        .addObject<Window>()
-        .run();
+    App()
+        .AddObject<World>(std::move(world))
+        .AddObject<Window>(500, 100)
+        .Run();
 }

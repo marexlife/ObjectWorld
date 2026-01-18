@@ -2,8 +2,9 @@
 
 #include "object/Object.h"
 
-class Player final : public Events {
+class Player final : public Events
+{
   private:
-    void emerge() override;
-    void tick() override;
+    void Emerge() override;
+    void Tick() override;
 };

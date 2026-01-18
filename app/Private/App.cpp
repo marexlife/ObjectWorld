@@ -2,14 +2,18 @@
 #include "object/Object.h"
 #include <memory>
 
-void App::run() {
-    for (std::unique_ptr<Events> &event : events_) {
-        event->emerge();
+void App::Run()
+{
+    for (std::unique_ptr<Events> &event : events_)
+    {
+        event->Emerge();
     }
 
-    while (true) {
-        for (std::unique_ptr<Events> &event : events_) {
-            event->tick();
+    while (true)
+    {
+        for (std::unique_ptr<Events> &event : events_)
+        {
+            event->Tick();
         }
     }
 }

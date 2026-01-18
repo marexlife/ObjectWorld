@@ -6,9 +6,12 @@
 
 class Events;
 
-class App final {
+class App final
+{
   public:
-    App() {}
+    App()
+    {
+    }
 
     /// A chainable method for creating a new
     /// object and adding it to the world
@@ -20,7 +23,8 @@ class App final {
     template <typename Tp, typename... Args>
         requires std::destructible<Tp> &&
                  std::derived_from<Tp, Events>
-    App &addObject(Args... args) {
+    App &AddObject(Args... args)
+    {
         events_.emplace_back(
             std::make_unique<Tp>(std::forward<Args>(args)...));
 
@@ -34,13 +38,14 @@ class App final {
     /// @return gives you back a reference to
     /// the world object to further chain
     /// methods on or store it.
-    template <typename Tp> App &addObject(std::unique_ptr<Tp> &&tp) {
+    template <typename Tp> App &AddObject(std::unique_ptr<Tp> &&tp)
+    {
         events_.emplace_back(std::move(tp));
 
         return *this;
     }
 
-    void run();
+    void Run();
 
   private:
     std::vector<std::unique_ptr<Events>> events_{};

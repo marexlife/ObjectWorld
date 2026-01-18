@@ -8,9 +8,13 @@
 
 class Player;
 
-class World final : public Events {
+class World final : public Events
+{
   public:
-    World() : events_{} {}
+    World() : events_{}
+    {
+    }
+
     World(World &&) = default;
 
     /// A chainable method for creating a new
@@ -23,15 +27,16 @@ class World final : public Events {
     template <typename Tp, typename... Args>
         requires std::destructible<Tp> &&
                  std::derived_from<Tp, Events>
-    World &addObject(Args... args) {
+    World &AddObject(Args... args)
+    {
         events_.emplace_back(
             std::make_shared<Tp>(std::forward<Args>(args)...));
 
         return *this;
     }
 
-    void emerge() override;
-    void tick() override;
+    virtual void Emerge() override;
+    void Tick() override;
 
     World(const World &) = delete;
     World &operator=(const World &) = delete;

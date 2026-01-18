@@ -1,5 +1,9 @@
 #include "player/Player.h"
 
-void Player::emerge() {}
+void Player::Emerge()
+{
+}
 
-void Player::tick() {}
+void Player::Tick()
+{
+}
