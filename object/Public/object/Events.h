@@ -26,7 +26,7 @@ template <typename Ret, typename... Args> class Event
         funcs_.emplace_back(f);
     }
 
-    void Fire()
+    void operator()()
     {
         for (std::move_only_function<void()> &f : funcs_)
         {

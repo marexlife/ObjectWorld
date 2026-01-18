@@ -44,6 +44,7 @@ void Window::Tick()
         switch (event->type)
         {
         case SDL_QUIT:
+            windowShouldClose_();
             break;
         default:
             break;

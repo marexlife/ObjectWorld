@@ -26,7 +26,7 @@ class Window final : public Events
     void SubscribeWindowShouldClose(
         std::move_only_function<void()> &&f)
     {
-        onWindowCloseEvent_.Subscribe(std::move(f));
+        windowShouldClose_.Subscribe(std::move(f));
     }
 
     Window(Window &&) = default;
@@ -38,7 +38,7 @@ class Window final : public Events
 
   private:
     std::uint32_t windowFlags_{};
-    Event<void> onWindowCloseEvent_{};
+    Event<void> windowShouldClose_{};
 
     int width_{};
     int height_{};
