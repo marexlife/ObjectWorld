@@ -44,16 +44,19 @@ void Window::Emerge()
 
 void Window::Tick()
 {
-    SDL_Event *event = NULL;
+    SDL_Event *event = nullptr;
 
     std::println("Window tick");
 
     while (SDL_PollEvent(event))
     {
-        if (event == NULL) {
+        if (event == nullptr)
+        {
+            std::println("event is NULL!");
+
             continue;
         }
-        
+
         switch (event->type)
         {
         case SDL_QUIT:
