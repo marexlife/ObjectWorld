@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <expected>
+#include <functional>
 #include <memory>
 #include <string_view>
 
@@ -22,6 +23,12 @@ class Window final : public Events
     void Emerge() override;
     void Tick() override;
 
+    void SubscribeWindowShouldClose(
+        std::move_only_function<void()> &&f)
+    {
+        onWindowCloseEvent_.Subscribe(std::move(f));
+    }
+
     Window(Window &&) = default;
     Window &operator=(Window &&) = delete;
     Window(const Window &) = delete;
@@ -30,13 +37,14 @@ class Window final : public Events
     ~Window() override;
 
   private:
-    std::uint32_t windowFlags_;
+    std::uint32_t windowFlags_{};
+    Event<void> onWindowCloseEvent_{};
 
-    int width_;
-    int height_;
+    int width_{};
+    int height_{};
 
-    SDL_Window *window_;
-    SDL_Renderer *renderer_;
+    SDL_Window *window_{};
+    SDL_Renderer *renderer_{};
 
     Window(SDL_Window *window, SDL_Renderer *renderer, int width,
            int height, std::uint32_t windowFlags)

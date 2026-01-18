@@ -30,7 +30,6 @@ class App final
         return *this;
     }
 
-    void RequestClose();
     void Run();
 
   private:
