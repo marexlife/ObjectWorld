@@ -22,7 +22,7 @@ class App final {
                  std::derived_from<Tp, Events>
     App &addObject(Args... args) {
         events_.emplace_back(
-            std::make_shared<Tp>(std::forward<Args>(args)...));
+            std::make_unique<Tp>(std::forward<Args>(args)...));
 
         return *this;
     }
