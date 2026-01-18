@@ -30,10 +30,12 @@ class App final
         return *this;
     }
 
+    void RequestClose();
     void Run();
 
   private:
     std::vector<std::unique_ptr<Events>> events_{};
+    bool shouldRun_;
 
     App()
     {

@@ -10,4 +10,4 @@ class Player final : public Events
     void Emerge() override;
     void Tick() override;
 };
-}
+} // namespace oworld

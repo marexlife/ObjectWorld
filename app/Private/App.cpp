@@ -11,12 +11,17 @@ void App::Run()
         event->Emerge();
     }
 
-    while (true)
+    while (shouldRun_)
     {
         for (std::unique_ptr<Events> &event : events_)
         {
             event->Tick();
         }
     }
+}
+
+void App::RequestClose()
+{
+    shouldRun_ = false;
 }
 } // namespace oworld

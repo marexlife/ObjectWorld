@@ -1,5 +1,7 @@
 #pragma once
 
+#include <concepts>
+
 namespace oworld
 {
 class Events
@@ -15,4 +17,5 @@ class Events
     {
     }
 };
+
 } // namespace oworld
