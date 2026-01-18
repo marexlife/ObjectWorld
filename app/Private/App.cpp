@@ -1,14 +1,15 @@
 #include "app/App.h"
-#include "player/Player.h"
-#include "window/Window.h"
+#include "object/Object.h"
+#include <memory>
 
 void App::run() {
-    world_.addObject<Player>();
-    world_.addObject<Window>();
-
-    world_.emerge();
+    for (std::unique_ptr<Events> &event : events_) {
+        event->emerge();
+    }
 
     while (true) {
-        world_.tick();
+        for (std::unique_ptr<Events> &event : events_) {
+            event->tick();
+        }
     }
 }
