@@ -1,29 +1,52 @@
 #include "window/Window.h"
 #include "SDL2/SDL.h"
+#include <SDL_error.h>
+#include <SDL_events.h>
 #include <SDL_render.h>
 #include <SDL_video.h>
+#include <memory>
 
-Window::Window(int width, int height, std::uint32_t windowFlags)
-    : window_(nullptr), renderer_(nullptr), width_(0), height_(0)
+std::expected<std::unique_ptr<Window>, std::string_view> Window::
+    TryCreate(int width, int height, std::uint32_t windowFlags)
 {
+    SDL_Window *window = nullptr;
+    SDL_Renderer *renderer = nullptr;
+
+    int intiErr = SDL_Init(SDL_INIT_EVENTS);
+
+    if (intiErr != 0)
+    {
+        return std::unexpected(SDL_GetError());
+    }
+
+    SDL_CreateWindowAndRenderer(width, height, windowFlags, &window,
+                                &renderer);
+
+    SDL_ShowWindow(window);
+
+    return std::expected<std::unique_ptr<Window>, std::string_view>(
+        std::unique_ptr<Window>(new Window(window, renderer, width,
+                                           height, windowFlags)));
 }
 
 void Window::Emerge()
 {
-    int intiErr = SDL_Init(SDL_INIT_VIDEO);
-
-    if (intiErr != 0)
-    {
-    }
-
-    SDL_CreateWindowAndRenderer(width_, height_, windowFlags,
-                                &window_, &renderer_);
-
-    SDL_ShowWindow(window_);
 }
 
 void Window::Tick()
 {
+    SDL_Event *event;
+
+    while (SDL_PollEvent(event))
+    {
+        switch (event->type)
+        {
+        case SDL_QUIT:
+            break;
+        default:
+            break;
+        }
+    }
 }
 
 Window::~Window()

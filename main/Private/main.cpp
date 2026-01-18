@@ -2,7 +2,10 @@
 #include "player/Player.h"
 #include "window/Window.h"
 #include "world/World.h"
+#include <expected>
 #include <memory>
+#include <print>
+#include <string_view>
 
 int main()
 {
@@ -10,8 +13,13 @@ int main()
 
     world->AddObject<Player>();
 
-    App()
-        .AddObject<World>(std::move(world))
-        .AddObject<Window>(1000, 1000)
-        .Run();
+    if (std::expected<std::unique_ptr<Window>, std::string_view>
+            windowResult = Window::TryCreate(1000, 1000))
+    {
+        App::Create().AddObject<World>(std::move(world)).Run();
+    }
+    else
+    {
+        std::println("{}", windowResult.error());
+    }
 }
