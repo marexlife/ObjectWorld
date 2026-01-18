@@ -23,7 +23,7 @@ template <typename Ret, typename... Args> class Event
   public:
     void Subscribe(std::move_only_function<Ret(Args...)> &&f)
     {
-        funcs_.emplace_back(f);
+        funcs_.emplace_back(std::move(f));
     }
 
     void Fire()

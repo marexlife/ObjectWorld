@@ -20,8 +20,4 @@ void App::Run()
     }
 }
 
-void App::RequestClose()
-{
-    shouldRun_ = false;
-}
 } // namespace oworld
