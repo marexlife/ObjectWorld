@@ -1,21 +1,28 @@
 #include "app/App.h"
 #include "object/Events.h"
+#include "window/Window.h"
+#include <expected>
 #include <memory>
+#include <string_view>
 
 namespace oworld
 {
 void App::Run()
 {
-    for (std::unique_ptr<Events> &event : events_)
-    {
-        event->Emerge();
-    }
+    bool shouldRun = true;
 
-    while (shouldRun_)
+    if (std::expected<std::unique_ptr<Window>, std::string_view>
+            windowResult = Window::TryCreate(1000, 1000))
     {
-        for (std::unique_ptr<Events> &event : events_)
+        std::unique_ptr<Window> &window = *windowResult;
+
+        window->Emerge();
+        window->SubscribeWindowShouldClose(
+            [&shouldRun] { shouldRun = false; });
+
+        while (shouldRun)
         {
-            event->Tick();
+            window->Tick();
         }
     }
 }
