@@ -1,5 +1,4 @@
 #include "world/World.h"
-#include "object/Object.h"
 
 #include <memory>
 

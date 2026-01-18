@@ -4,7 +4,8 @@ project(object)
 include(${CMAKE_SOURCE_DIR}/cmake/flags.cmake)
 
 add_library(${PROJECT_NAME}
-    Private/Object.cpp
+    Private/Events.cpp
+    Private/Name.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC

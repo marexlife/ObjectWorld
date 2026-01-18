@@ -1,5 +1,4 @@
 #include "app/App.h"
-#include "object/Object.h"
 #include <memory>
 
 void App::Run()
