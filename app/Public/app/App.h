@@ -30,5 +30,5 @@ class App final {
     void run();
 
   private:
-    std::vector<std::unique_ptr<Events>> events_;
+    std::vector<std::unique_ptr<Events>> events_{};
 };
