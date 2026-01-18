@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#include "object/Object.h"
+#include "object/Events.h"
 
 struct SDL_Window;
 struct SDL_Renderer;

@@ -12,6 +12,6 @@ int main()
 
     App()
         .AddObject<World>(std::move(world))
-        .AddObject<Window>(500, 100)
+        .AddObject<Window>(1000, 1000)
         .Run();
 }

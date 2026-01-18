@@ -1,10 +1,7 @@
 #include "window/Window.h"
 #include "SDL2/SDL.h"
-#include "object/Object.h"
 #include <SDL_render.h>
 #include <SDL_video.h>
-#include <expected>
-#include <system_error>
 
 Window::Window(int width, int height, std::uint32_t windowFlags)
     : window_(nullptr), renderer_(nullptr), width_(0), height_(0)
