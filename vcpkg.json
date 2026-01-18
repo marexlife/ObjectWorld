@@ -1,6 +1,6 @@
 {
     "name": "oworld",
     "dependencies": [
-        "raylib"
+        "sdl2"
     ]
 }
