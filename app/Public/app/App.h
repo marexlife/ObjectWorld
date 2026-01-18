@@ -1,10 +1,5 @@
 #pragma once
 
-#include "object/Events.h"
-#include "window/Window.h"
-#include <memory>
-#include <vector>
-
 namespace oworld
 {
 class Events;
