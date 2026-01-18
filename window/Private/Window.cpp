@@ -6,6 +6,7 @@
 #include <SDL_video.h>
 #include <expected>
 #include <memory>
+#include <print>
 
 namespace oworld
 {
@@ -44,6 +45,8 @@ void Window::Emerge()
 void Window::Tick()
 {
     SDL_Event *event;
+
+    std::println("Window tick");
 
     while (SDL_PollEvent(event))
     {

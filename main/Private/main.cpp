@@ -19,9 +19,7 @@ int main()
                       std::string_view>
             windowResult = oworld::Window::TryCreate(1000, 1000))
     {
-        oworld::App::Create()
-            .AddObject<oworld::World>(std::move(world))
-            .Run();
+        oworld::App::Create().Run();
     }
     else
     {

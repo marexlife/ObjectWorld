@@ -1,6 +1,7 @@
 #include "app/App.h"
 #include "object/Events.h"
 #include "window/Window.h"
+#include "world/World.h"
 #include <expected>
 #include <memory>
 #include <string_view>
@@ -15,14 +16,18 @@ void App::Run()
             windowResult = Window::TryCreate(1000, 1000))
     {
         std::unique_ptr<Window> &window = *windowResult;
+        std::unique_ptr<World> world = std::make_unique<World>();
 
         window->Emerge();
+        world->Emerge();
+
         window->SubscribeWindowShouldClose(
             [&shouldRun] { shouldRun = false; });
 
         while (shouldRun)
         {
             window->Tick();
+            world->Tick();
         }
     }
 }
