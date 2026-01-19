@@ -12,20 +12,23 @@ namespace oworld
 {
 std::expected<std::unique_ptr<Window>,
               std::string_view>
-Window::TryCreate(int width, int height,
+Window::TryCreate(int x, int y, int width,
+                  int height,
                   std::uint32_t windowFlags)
 {
     SDL_Init(0);
 
-    SDL_Window *window = SDL_CreateWindow(
-        "Window", 0, 0, 1000, 500, 0);
+    SDL_Window *window =
+        SDL_CreateWindow("Window", x, y, width,
+                         height, windowFlags);
 
     SDL_ShowWindow(window);
 
     return std::expected<std::unique_ptr<Window>,
                          std::string_view>(
-        std::unique_ptr<Window>(new Window(
-            window, width, height, windowFlags)));
+        std::unique_ptr<Window>(
+            new Window(window, x, y, width,
+                       height, windowFlags)));
 }
 
 void Window::Emerge()

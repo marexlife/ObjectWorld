@@ -18,7 +18,7 @@ class Window final : public Events
   public:
     [[nodiscard]] static std::expected<
         std::unique_ptr<Window>, std::string_view>
-    TryCreate(int width, int height,
+    TryCreate(int x, int y, int width, int height,
               std::uint32_t windowFlags = 0);
 
     void Emerge() override;
@@ -39,18 +39,21 @@ class Window final : public Events
     ~Window() override;
 
   private:
-    std::uint32_t windowFlags_{};
-    Event<void> windowShouldClose_{};
-
-    int width_{};
-    int height_{};
-
     SDL_Window *window_{};
 
-    Window(SDL_Window *window, int width,
-           int height, std::uint32_t windowFlags)
-        : window_(window), width_(width),
-          height_(height),
+    int x_{};
+    int y_{};
+    int width_{};
+    int height_{};
+    std::uint32_t windowFlags_{};
+
+    Event<void> windowShouldClose_{};
+
+    Window(SDL_Window *window, int x, int y,
+           int width, int height,
+           std::uint32_t windowFlags)
+        : x_(x), y_(y), window_(window),
+          width_(width), height_(height),
           windowFlags_(windowFlags)
     {
     }
