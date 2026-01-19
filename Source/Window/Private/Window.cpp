@@ -39,6 +39,16 @@ Window::TryCreate(std::string_view windowName,
             "failed to create Window");
     }
 
+    SDL_GLContext context =
+        SDL_GL_CreateContext(window);
+
+    if (context == nullptr)
+    {
+        return std::unexpected(
+            "failed to create OpenGL context for "
+            "SDL2");
+    }
+
     SDL_ShowWindow(window);
 
     return std::expected<std::unique_ptr<Window>,
@@ -50,7 +60,6 @@ Window::TryCreate(std::string_view windowName,
 void Window::Tick()
 {
     SDL_UpdateWindowSurface(window_);
-
     SDL_Event sdlEvent{};
 
     if (SDL_PollEvent(&sdlEvent))
