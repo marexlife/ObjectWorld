@@ -1,5 +1,6 @@
 #include "app/App.h"
 #include "object/Object.h"
+#include "player/Player.h"
 #include "spdlog/spdlog.h"
 #include "window/Window.h"
 #include "world/World.h"
@@ -18,13 +19,18 @@ void App::Run()
             windowResult = Window::TryCreate(
                 "Window", X, Y, Width, Height))
     {
+        std::unique_ptr<World> world =
+            std::make_unique<World>();
+
         (*windowResult)
             ->SubscribeWindowShouldClose(
                 [&] { shouldRun_ = false; });
 
+        world->AddObject<Player>();
+
         std::array<std::unique_ptr<Object>, 2>
             events{
-                std::make_unique<World>(),
+                std::move(world),
                 std::move(*windowResult),
             };
 
