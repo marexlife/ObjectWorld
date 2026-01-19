@@ -7,6 +7,7 @@
 #include <expected>
 #include <format>
 #include <memory>
+#include <string>
 #include <string_view>
 
 namespace ObjectWorld
