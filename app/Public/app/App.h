@@ -1,8 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <span>
-#include <vector>
+
 namespace ObjectWorld
 {
 class Events;
