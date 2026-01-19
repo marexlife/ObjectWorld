@@ -9,10 +9,14 @@ class Object
 {
   public:
     /// runs once at emerging of the object
-    virtual void Emerge() = 0;
+    virtual void Emerge()
+    {
+    }
 
     /// runs once per frame
-    virtual void Tick() = 0;
+    virtual void Tick()
+    {
+    }
 
     virtual ~Object()
     {

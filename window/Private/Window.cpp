@@ -47,10 +47,6 @@ Window::TryCreate(std::string_view windowName,
             window, x, y, width, height)));
 }
 
-void Window::Emerge()
-{
-}
-
 void Window::Tick()
 {
     SDL_UpdateWindowSurface(window_);
@@ -73,4 +69,4 @@ Window::~Window()
     SDL_DestroyWindow(window_);
     SDL_Quit();
 }
-} // namespace oworld
+} // namespace ObjectWorld
