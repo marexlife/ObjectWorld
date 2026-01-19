@@ -1,5 +1,6 @@
 #include "Window/Window.h"
 #include "SDL2/SDL.h"
+#include "SDL_events.h"
 #include <SDL_error.h>
 #include <SDL_render.h>
 #include <SDL_video.h>
@@ -49,6 +50,8 @@ Window::TryCreate(std::string_view windowName,
 void Window::Tick()
 {
     SDL_UpdateWindowSurface(window_);
+
+    SDL_Event sdlEvent_{};
 
     if (SDL_PollEvent(&sdlEvent_))
     {

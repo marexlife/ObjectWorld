@@ -8,7 +8,6 @@
 
 #include "Object/Event.h"
 #include "Object/Object.h"
-#include "SDL_events.h"
 
 struct SDL_Window;
 struct SDL_Renderer;
@@ -48,7 +47,6 @@ class Window final : public Object
     int y_{};
     int width_{};
     int height_{};
-    SDL_Event sdlEvent_{};
 
     Event<void> windowShouldClose_{};
 
