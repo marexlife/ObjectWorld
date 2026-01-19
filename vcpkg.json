@@ -1,6 +1,7 @@
 {
     "name": "oworld",
     "dependencies": [
-        "sdl2"
+        "sdl2",
+        "glad"
     ]
 }

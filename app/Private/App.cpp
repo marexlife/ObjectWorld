@@ -14,7 +14,7 @@ void App::Run()
     if (std::expected<std::unique_ptr<Window>,
                       std::string_view>
             windowResult =
-                Window::TryCreate(1000, 1000))
+                Window::TryCreate(2000, 1500))
     {
         std::unique_ptr<Window> &window =
             *windowResult;
