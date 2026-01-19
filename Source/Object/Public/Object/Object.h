@@ -4,22 +4,25 @@
 
 namespace ObjectWorld
 {
-class Object
+class OObject
 {
   public:
-    Object() {}
+    OObject()
+    {
+    }
     /// runs once at emerging of the object
     virtual void Emerge()
     {
     }
 
-    [[nodiscard]] virtual const Vec3 &
+    [[nodiscard]] virtual const SVector &
     GetPosition() const
     {
         return pos_;
     }
 
-    virtual void SetPosition(const Vec3 &newPos)
+    virtual void SetPosition(
+        const SVector &newPos)
     {
         pos_ = newPos;
     }
@@ -29,13 +32,13 @@ class Object
     {
     }
 
-    virtual ~Object()
+    virtual ~OObject()
     {
     }
 
   private:
-    Vec3 pos_;
-    Rot3 rot_;
-    Vec3 sca_;
+    SVector pos_;
+    SRotator rot_;
+    SVector sca_;
 };
 } // namespace ObjectWorld

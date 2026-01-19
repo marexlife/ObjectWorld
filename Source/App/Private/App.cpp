@@ -14,9 +14,9 @@ namespace ObjectWorld
 {
 void App::Run()
 {
-    if (std::expected<std::unique_ptr<Window>,
+    if (std::expected<std::unique_ptr<OWindow>,
                       std::string_view>
-            windowResult = Window::TryCreate(
+            windowResult = OWindow::TryCreate(
                 "Window", X, Y, Width, Height))
     {
         std::unique_ptr<World> world =
@@ -28,7 +28,7 @@ void App::Run()
 
         world->AddObject<Player>();
 
-        std::array<std::unique_ptr<Object>, 2>
+        std::array<std::unique_ptr<OObject>, 2>
             events{
                 std::move(world),
                 std::move(*windowResult),
@@ -43,17 +43,17 @@ void App::Run()
 }
 
 void App::EntityEvents(
-    std::array<std::unique_ptr<Object>, 2>
+    std::array<std::unique_ptr<OObject>, 2>
         &&events)
 {
-    for (std::unique_ptr<Object> &event : events)
+    for (std::unique_ptr<OObject> &event : events)
     {
         event->Emerge();
     }
 
     while (shouldRun_)
     {
-        for (std::unique_ptr<Object> &event :
+        for (std::unique_ptr<OObject> &event :
              events)
         {
             event->Tick();

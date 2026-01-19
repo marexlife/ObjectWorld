@@ -1,20 +1,39 @@
 #pragma once
 
 #include <functional>
+#include <vector>
 
 namespace ObjectWorld
 {
+class OObject
+{
+  public:
+    /// runs once at emerging of the object
+    virtual void Emerge()
+    {
+    }
+
+    /// runs once per frame
+    virtual void Tick()
+    {
+    }
+
+    virtual ~OObject()
+    {
+    }
+};
+
 template <typename Ret, typename... Args>
 class OEvent
 {
   public:
-    virtual void Subscribe(
+    void Subscribe(
         std::move_only_function<Ret(Args...)> &&f)
     {
         functors_.emplace_back(std::move(f));
     }
 
-    virtual void Fire()
+    void Fire()
     {
         for (std::move_only_function<void()>
                  &functor : functors_)

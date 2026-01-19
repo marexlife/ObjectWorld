@@ -8,36 +8,36 @@ namespace ObjectWorld
 {
 template <typename NumType>
     requires std::is_arithmetic_v<NumType>
-struct TVec3 final
+struct TVector final
 {
-    explicit TVec3()
+    explicit TVector()
     {
     }
 
-    [[nodiscard]] TVec3 operator+(
-        const TVec3 &other)
+    [[nodiscard]] TVector operator+(
+        const TVector &other)
     {
-        return TVec3(x + other.x, y + other.y,
-                     z + other.z);
+        return TVector(x + other.x, y + other.y,
+                       z + other.z);
     }
 
-    [[nodiscard]] TVec3 operator-(
-        const TVec3 &other)
+    [[nodiscard]] TVector operator-(
+        const TVector &other)
     {
-        return TVec3(x - other.x, y - other.y,
-                     z - other.z);
+        return TVector(x - other.x, y - other.y,
+                       z - other.z);
     }
 
-    [[nodiscard]] TVec3 operator*(
-        const TVec3 &other)
+    [[nodiscard]] TVector operator*(
+        const TVector &other)
     {
-        return TVec3(x * other.x, y * other.y,
-                     z * other.z);
+        return TVector(x * other.x, y * other.y,
+                       z * other.z);
     }
 
     [[nodiscard]] std::expected<void,
                                 std::string_view>
-    operator/(const TVec3 &other)
+    operator/(const TVector &other)
     {
         if (other.x == 0 || other.y == 0 ||
             other.z == 0) [[unlikely]]
@@ -46,39 +46,39 @@ struct TVec3 final
                 "division by zero");
         }
 
-        return TVec3(x / other.x, y / other.y,
-                     z / other.z);
+        return TVector(x / other.x, y / other.y,
+                       z / other.z);
     }
 
-    explicit TVec3(const TVec3 &other)
+    explicit TVector(const TVector &other)
     {
         x = other.x;
         y = other.y;
         z = other.z;
     }
 
-    void operator=(const TVec3 &other)
+    void operator=(const TVector &other)
     {
         x = other.x;
         y = other.y;
         z = other.z;
     }
 
-    void operator+=(const TVec3 &other)
+    void operator+=(const TVector &other)
     {
         x += other.x;
         y += other.y;
         z += other.z;
     }
 
-    void operator-=(const TVec3 &other)
+    void operator-=(const TVector &other)
     {
         x -= other.x;
         y -= other.y;
         z -= other.z;
     }
 
-    void operator*=(const TVec3 &other)
+    void operator*=(const TVector &other)
     {
         x *= other.x;
         y *= other.y;
@@ -87,7 +87,7 @@ struct TVec3 final
 
     [[nodiscard]] std::expected<void,
                                 std::string_view>
-    operator/=(const TVec3 &other)
+    operator/=(const TVector &other)
     {
         if (other.x == 0 || other.y == 0 ||
             other.z == 0) [[unlikely]]
@@ -109,27 +109,27 @@ struct TVec3 final
     NumType z{};
 };
 
-using Vec3 = TVec3<float>;
+using SVector = TVector<float>;
 
 template <typename NumType>
     requires std::is_arithmetic_v<NumType>
-struct TRot3 final
+struct TRotator final
 {
-    void operator+=(const TRot3 &other)
+    void operator+=(const TRotator &other)
     {
         x += other.x;
         y += other.y;
         z += other.z;
     }
 
-    void operator-=(const TRot3 &other)
+    void operator-=(const TRotator &other)
     {
         x -= other.x;
         y -= other.y;
         z -= other.z;
     }
 
-    void operator*=(const TRot3 &other)
+    void operator*=(const TRotator &other)
     {
         x *= other.x;
         y *= other.y;
@@ -138,7 +138,7 @@ struct TRot3 final
 
     [[nodiscard]] std::expected<void,
                                 std::string_view>
-    operator/=(const TRot3 &other)
+    operator/=(const TRotator &other)
     {
         if (other.x == 0 || other.y == 0 ||
             other.z == 0)
@@ -160,5 +160,5 @@ struct TRot3 final
     NumType z;
 };
 
-using Rot3 = TRot3<float>;
+using SRotator = TRotator<float>;
 } // namespace ObjectWorld

@@ -13,11 +13,11 @@ struct SDL_Renderer;
 
 namespace ObjectWorld
 {
-class Window final : public Object
+class OWindow final : public OObject
 {
   public:
     [[nodiscard]] static std::expected<
-        std::unique_ptr<Window>, std::string>
+        std::unique_ptr<OWindow>, std::string>
     TryCreate(std::string windowName, int x,
               int y, int width, int height,
               std::uint32_t sdlFlags = 0,
@@ -32,12 +32,12 @@ class Window final : public Object
             std::move(f));
     }
 
-    Window(Window &&) = default;
-    Window &operator=(Window &&) = delete;
-    Window(const Window &) = delete;
-    Window &operator=(const Window &) = delete;
+    OWindow(OWindow &&) = default;
+    OWindow &operator=(OWindow &&) = delete;
+    OWindow(const OWindow &) = delete;
+    OWindow &operator=(const OWindow &) = delete;
 
-    virtual ~Window() override;
+    virtual ~OWindow() override;
 
   private:
     SDL_Window *window_{};
@@ -47,10 +47,10 @@ class Window final : public Object
     int width_{};
     int height_{};
 
-    Event<void> windowShouldClose_{};
+    OEvent<void> windowShouldClose_{};
 
-    Window(SDL_Window *window, int x, int y,
-           int width, int height)
+    OWindow(SDL_Window *window, int x, int y,
+            int width, int height)
         : x_(x), y_(y), window_(window),
           width_(width), height_(height)
     {

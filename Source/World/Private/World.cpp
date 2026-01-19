@@ -7,7 +7,7 @@ namespace ObjectWorld
 {
 void World::Emerge()
 {
-    for (std::shared_ptr<Object> &object :
+    for (std::shared_ptr<OObject> &object :
          events_)
     {
         object->Emerge();
@@ -16,7 +16,7 @@ void World::Emerge()
 
 void World::Tick()
 {
-    for (std::shared_ptr<Object> &object :
+    for (std::shared_ptr<OObject> &object :
          events_)
     {
         object->Tick();

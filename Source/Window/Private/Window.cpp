@@ -11,12 +11,12 @@
 
 namespace ObjectWorld
 {
-std::expected<std::unique_ptr<Window>,
+std::expected<std::unique_ptr<OWindow>,
               std::string>
-Window::TryCreate(std::string windowName, int x,
-                  int y, int width, int height,
-                  std::uint32_t sdlFlags,
-                  std::uint32_t windowFlags)
+OWindow::TryCreate(std::string windowName, int x,
+                   int y, int width, int height,
+                   std::uint32_t sdlFlags,
+                   std::uint32_t windowFlags)
 {
     int initErrorCode = SDL_Init(sdlFlags);
 
@@ -50,13 +50,13 @@ Window::TryCreate(std::string windowName, int x,
 
     SDL_ShowWindow(window);
 
-    return std::expected<std::unique_ptr<Window>,
+    return std::expected<std::unique_ptr<OWindow>,
                          std::string>(
-        std::unique_ptr<Window>(new Window(
+        std::unique_ptr<OWindow>(new OWindow(
             window, x, y, width, height)));
 }
 
-void Window::Tick()
+void OWindow::Tick()
 {
     SDL_UpdateWindowSurface(window_);
     SDL_Event sdlEvent{};
@@ -74,7 +74,7 @@ void Window::Tick()
     }
 }
 
-Window::~Window()
+OWindow::~OWindow()
 {
     SDL_DestroyWindow(window_);
     SDL_Quit();
