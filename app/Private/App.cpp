@@ -18,20 +18,14 @@ void App::Run()
             windowResult = Window::TryCreate(
                 "Window", X, Y, Width, Height))
     {
-        std::unique_ptr<Events> world =
-            std::make_unique<World>();
-
         (*windowResult)
             ->SubscribeWindowShouldClose(
                 [&] { shouldRun_ = false; });
 
-        std::array<std::unique_ptr<Events>, 2>
-            events{
-                std::move(*windowResult),
-                std::move(world),
-            };
-
-        EntityEvents(std::move(events));
+        EntityEvents({
+            std::make_unique<World>(),
+            std::move(*windowResult),
+        });
     }
 }
 
