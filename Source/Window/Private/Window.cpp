@@ -1,7 +1,6 @@
 #include "Window/Window.h"
 #include "SDL2/SDL.h"
 #include <SDL_error.h>
-#include <SDL_events.h>
 #include <SDL_render.h>
 #include <SDL_video.h>
 #include <expected>
@@ -51,9 +50,9 @@ void Window::Tick()
 {
     SDL_UpdateWindowSurface(window_);
 
-    if (SDL_Event event; SDL_PollEvent(&event))
+    if (SDL_PollEvent(&sdlEvent_))
     {
-        switch (event.type)
+        switch (sdlEvent_.type)
         {
         case SDL_QUIT:
             windowShouldClose_.Fire();
