@@ -7,20 +7,22 @@
 #include <expected>
 #include <memory>
 #include <print>
+#include <string_view>
 
 namespace oworld
 {
 std::expected<std::unique_ptr<Window>,
               std::string_view>
-Window::TryCreate(int x, int y, int width,
+Window::TryCreate(std::string_view windowName,
+                  int x, int y, int width,
                   int height,
                   std::uint32_t windowFlags)
 {
     SDL_Init(0);
 
-    SDL_Window *window =
-        SDL_CreateWindow("Window", x, y, width,
-                         height, windowFlags);
+    SDL_Window *window = SDL_CreateWindow(
+        windowName.data(), x, y, width, height,
+        windowFlags);
 
     SDL_ShowWindow(window);
 

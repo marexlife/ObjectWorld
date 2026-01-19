@@ -19,7 +19,7 @@ void App::Run()
     if (std::expected<std::unique_ptr<Window>,
                       std::string_view>
             windowResult = Window::TryCreate(
-                X, Y, WIDTH, HEIGHT))
+                "Window", X, Y, WIDTH, HEIGHT))
     {
         std::unique_ptr<Window> &window =
             *windowResult;

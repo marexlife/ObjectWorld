@@ -18,7 +18,8 @@ class Window final : public Events
   public:
     [[nodiscard]] static std::expected<
         std::unique_ptr<Window>, std::string_view>
-    TryCreate(int x, int y, int width, int height,
+    TryCreate(std::string_view windowName, int x,
+              int y, int width, int height,
               std::uint32_t windowFlags = 0);
 
     void Emerge() override;
