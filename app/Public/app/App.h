@@ -4,7 +4,7 @@
 
 namespace ObjectWorld
 {
-class Events;
+class Object;
 
 class App final
 {
@@ -22,7 +22,7 @@ class App final
     void Run();
 
     void EntityEvents(
-        std::array<std::unique_ptr<Events>, 2>
+        std::array<std::unique_ptr<Object>, 2>
             &&events);
 
   private:

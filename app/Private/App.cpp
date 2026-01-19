@@ -22,7 +22,7 @@ void App::Run()
             ->SubscribeWindowShouldClose(
                 [&] { shouldRun_ = false; });
 
-        std::array<std::unique_ptr<Events>, 2>
+        std::array<std::unique_ptr<Object>, 2>
             events{
                 std::make_unique<World>(),
                 std::move(*windowResult),
@@ -38,17 +38,17 @@ void App::Run()
 }
 
 void App::EntityEvents(
-    std::array<std::unique_ptr<Events>, 2>
+    std::array<std::unique_ptr<Object>, 2>
         &&events)
 {
-    for (std::unique_ptr<Events> &event : events)
+    for (std::unique_ptr<Object> &event : events)
     {
         event->Emerge();
     }
 
     while (shouldRun_)
     {
-        for (std::unique_ptr<Events> &event :
+        for (std::unique_ptr<Object> &event :
              events)
         {
             event->Tick();

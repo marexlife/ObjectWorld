@@ -4,7 +4,7 @@
 
 namespace ObjectWorld
 {
-class Player final : public Events
+class Player final : public Object
 {
   private:
     void Emerge() override;

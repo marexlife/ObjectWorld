@@ -5,7 +5,7 @@
 
 namespace ObjectWorld
 {
-class Events
+class Object
 {
   public:
     /// runs once at emerging of the object
@@ -14,7 +14,7 @@ class Events
     /// runs once per frame
     virtual void Tick() = 0;
 
-    virtual ~Events()
+    virtual ~Object()
     {
     }
 };

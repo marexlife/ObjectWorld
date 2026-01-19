@@ -13,7 +13,7 @@ struct SDL_Renderer;
 
 namespace ObjectWorld
 {
-class Window final : public Events
+class Window final : public Object
 {
   public:
     [[nodiscard]] static std::expected<
@@ -57,4 +57,4 @@ class Window final : public Events
     {
     }
 };
-} // namespace oworld
+} // namespace ObjectWorld

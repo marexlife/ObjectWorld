@@ -10,7 +10,7 @@ namespace ObjectWorld
 {
 class Player;
 
-class World final : public Events
+class World final : public Object
 {
   public:
     World() : events_{}
@@ -28,11 +28,11 @@ class World final : public Events
     /// methods on or store it.
     template <typename Tp, typename... Args>
         requires std::destructible<Tp> &&
-                 std::derived_from<Tp, Events>
+                 std::derived_from<Tp, Object>
     World &AddObject(Args... args)
     {
-        events_.emplace_back(
-            std::make_shared<Tp>(std::forward<Args>(args)...));
+        events_.emplace_back(std::make_shared<Tp>(
+            std::forward<Args>(args)...));
 
         return *this;
     }
@@ -46,6 +46,7 @@ class World final : public Events
     ~World() = default;
 
   private:
-    std::vector<std::shared_ptr<Events>> events_{};
+    std::vector<std::shared_ptr<Object>>
+        events_{};
 };
-} // namespace oworld
+} // namespace ObjectWorld
