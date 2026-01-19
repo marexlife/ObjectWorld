@@ -8,9 +8,6 @@
 #include "Object/Event.h"
 #include "Object/Object.h"
 
-struct SDL_Window;
-struct SDL_Renderer;
-
 namespace ObjectWorld
 {
 class OWindow final : public OObject
@@ -41,19 +38,9 @@ class OWindow final : public OObject
     virtual ~OWindow() override;
 
   private:
-    SDL_Window *window_{};
-
-    int x_{};
-    int y_{};
-    int width_{};
-    int height_{};
-
     OEvent<void> windowShouldClose_{};
 
-    OWindow(SDL_Window *window, int x, int y,
-            int width, int height)
-        : x_(x), y_(y), window_(window),
-          width_(width), height_(height)
+    OWindow(int x, int y, int width, int height)
     {
     }
 };
