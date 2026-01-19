@@ -23,9 +23,9 @@ void App::Run()
         world->Emerge();
 
         window->SubscribeWindowShouldClose(
-            [&] { self.shouldRun = false; });
+            [&] { shouldRun_ = false; });
 
-        while (shouldRun)
+        while (shouldRun_)
         {
             window->Tick();
             world->Tick();

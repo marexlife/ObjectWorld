@@ -20,7 +20,7 @@ class App final
     void Run();
 
   private:
-    bool shouldRun = true;
+    bool shouldRun_ = true;
 
     App()
     {
