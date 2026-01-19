@@ -3,6 +3,7 @@
 #include <expected>
 #include <string_view>
 #include <type_traits>
+
 namespace ObjectWorld
 {
 template <typename NumType>
