@@ -38,9 +38,13 @@ void Window::Tick()
 
     if (SDL_Event event; SDL_PollEvent(&event))
     {
-        if (event.type == SDL_QUIT)
+        switch (event.type)
         {
+        case SDL_QUIT:
             windowShouldClose_.Fire();
+            break;
+        default:
+            break;
         }
     }
 }
