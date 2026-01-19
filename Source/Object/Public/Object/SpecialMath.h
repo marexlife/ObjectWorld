@@ -56,4 +56,55 @@ struct TVec3 final
 };
 
 using Vec3 = TVec3<float>;
+
+template <typename NumType>
+    requires std::is_arithmetic_v<NumType>
+struct TRot3 final
+{
+    void operator+=(const TRot3 &other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+    }
+
+    void operator-=(const TRot3 &other)
+    {
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+    }
+
+    void operator*=(const TRot3 &other)
+    {
+        x *= other.x;
+        y *= other.y;
+        z *= other.z;
+    }
+
+    [[nodiscard]] std::expected<void,
+                                std::string_view>
+    operator/=(const TRot3 &other)
+    {
+        if (other.x == 0 || other.y == 0 ||
+            other.z == 0)
+        {
+            return std::unexpected(
+                "division by zero");
+        }
+
+        x *= other.x;
+        y *= other.y;
+        z *= other.z;
+
+        return std::expected<void,
+                             std::string_view>();
+    }
+
+    NumType x;
+    NumType y;
+    NumType z;
+};
+
+using Rot3 = TRot3<float>;
 } // namespace ObjectWorld
