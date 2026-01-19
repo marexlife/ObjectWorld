@@ -46,7 +46,7 @@ Window::TryCreate(std::string_view windowName,
     if (context == nullptr)
     {
         return std::unexpected(
-            "OpenGL context for "
+            "Failed to create OpenGL context for "
             "SDL2");
     }
 
