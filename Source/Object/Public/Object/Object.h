@@ -7,6 +7,7 @@ namespace ObjectWorld
 class Object
 {
   public:
+    Object() {}
     /// runs once at emerging of the object
     virtual void Emerge()
     {
@@ -35,6 +36,6 @@ class Object
   private:
     Vec3 pos_;
     Rot3 rot_;
-    Vec3 scl_;
+    Vec3 sca_;
 };
 } // namespace ObjectWorld

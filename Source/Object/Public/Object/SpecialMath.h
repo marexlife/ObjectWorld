@@ -10,6 +10,52 @@ template <typename NumType>
     requires std::is_arithmetic_v<NumType>
 struct TVec3 final
 {
+    explicit TVec3()
+    {
+    }
+
+    [[nodiscard]] TVec3 operator+(
+        const TVec3 &other)
+    {
+        return TVec3(x + other.x, y + other.y,
+                     z + other.z);
+    }
+
+    [[nodiscard]] TVec3 operator-(
+        const TVec3 &other)
+    {
+        return TVec3(x - other.x, y - other.y,
+                     z - other.z);
+    }
+
+    [[nodiscard]] TVec3 operator*(
+        const TVec3 &other)
+    {
+        return TVec3(x * other.x, y * other.y,
+                     z * other.z);
+    }
+
+    [[nodiscard]] TVec3 operator/(
+        const TVec3 &other)
+    {
+        return TVec3(x / other.x, y / other.y,
+                     z / other.z);
+    }
+
+    explicit TVec3(const TVec3 &other)
+    {
+        x = other.x;
+        y = other.y;
+        z = other.z;
+    }
+
+    TVec3 &operator=(const TVec3 &other)
+    {
+        x = other.x;
+        y = other.y;
+        z = other.z;
+    }
+
     void operator+=(const TVec3 &other)
     {
         x += other.x;
@@ -42,17 +88,17 @@ struct TVec3 final
                 "division by zero");
         }
 
-        x *= other.x;
-        y *= other.y;
-        z *= other.z;
+        x /= other.x;
+        y /= other.y;
+        z /= other.z;
 
         return std::expected<void,
                              std::string_view>();
     }
 
-    NumType x;
-    NumType y;
-    NumType z;
+    NumType x{};
+    NumType y{};
+    NumType z{};
 };
 
 using Vec3 = TVec3<float>;
