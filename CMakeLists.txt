@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(oworld)
+project(ObjectWorld)
 
 add_subdirectory(main)
 add_subdirectory(app)
