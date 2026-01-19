@@ -34,5 +34,7 @@ class Object
 
   private:
     Vec3 pos_;
+    Rot3 rot_;
+    Vec3 scl_;
 };
 } // namespace ObjectWorld
