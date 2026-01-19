@@ -9,5 +9,7 @@ class Player final : public Object
   private:
     virtual void Emerge() override;
     virtual void Tick() override;
+
+    virtual ~Player() override = default;
 };
 } // namespace ObjectWorld
