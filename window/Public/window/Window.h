@@ -6,7 +6,7 @@
 #include <memory>
 #include <string_view>
 
-#include "object/Events.h"
+#include "object/Object.h"
 
 struct SDL_Window;
 struct SDL_Renderer;
