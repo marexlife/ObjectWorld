@@ -1,5 +1,7 @@
 #pragma once
 
+#include <expected>
+#include <string_view>
 #include <type_traits>
 namespace ObjectWorld
 {
@@ -7,8 +9,50 @@ template <typename NumType>
     requires std::is_arithmetic_v<NumType>
 struct TVec3 final
 {
+    void operator+=(const TVec3 &other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+    }
+
+    void operator-=(const TVec3 &other)
+    {
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+    }
+
+    void operator*=(const TVec3 &other)
+    {
+        x *= other.x;
+        y *= other.y;
+        z *= other.z;
+    }
+
+    [[nodiscard]] std::expected<void,
+                                std::string_view>
+    operator/=(const TVec3 &other)
+    {
+        if (other.x == 0 || other.y == 0 ||
+            other.z == 0)
+        {
+            return std::unexpected(
+                "division by zero");
+        }
+
+        x *= other.x;
+        y *= other.y;
+        z *= other.z;
+
+        return std::expected<void,
+                             std::string_view>();
+    }
+
     NumType x;
     NumType y;
     NumType z;
 };
+
+using Vec3 = TVec3<float>;
 } // namespace ObjectWorld
