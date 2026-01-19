@@ -37,7 +37,7 @@ Window::TryCreate(std::string_view windowName,
     if (window == nullptr)
     {
         return std::unexpected(
-            "failed to create Window");
+            "Failed to create Window");
     }
 
     SDL_GLContext context =
@@ -46,7 +46,7 @@ Window::TryCreate(std::string_view windowName,
     if (context == nullptr)
     {
         return std::unexpected(
-            "failed to create OpenGL context for "
+            "OpenGL context for "
             "SDL2");
     }
 

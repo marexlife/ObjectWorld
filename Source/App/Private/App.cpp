@@ -38,8 +38,7 @@ void App::Run()
     }
     else
     {
-        spdlog::error(std::format(
-            "{}", windowResult.error()));
+        spdlog::error(windowResult.error());
     }
 }
 
