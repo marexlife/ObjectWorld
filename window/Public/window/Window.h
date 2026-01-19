@@ -16,9 +16,10 @@ namespace oworld
 class Window final : public Events
 {
   public:
-    [[nodiscard]] static std::expected<std::unique_ptr<Window>,
-                                       std::string_view>
-    TryCreate(int width, int height, std::uint32_t windowFlags = 0);
+    [[nodiscard]] static std::expected<
+        std::unique_ptr<Window>, std::string_view>
+    TryCreate(int width, int height,
+              std::uint32_t windowFlags = 0);
 
     void Emerge() override;
     void Tick() override;
@@ -26,7 +27,8 @@ class Window final : public Events
     void SubscribeWindowShouldClose(
         std::move_only_function<void()> &&f)
     {
-        windowShouldClose_.Subscribe(std::move(f));
+        windowShouldClose_.Subscribe(
+            std::move(f));
     }
 
     Window(Window &&) = default;
@@ -44,11 +46,11 @@ class Window final : public Events
     int height_{};
 
     SDL_Window *window_{};
-    SDL_Renderer *renderer_{};
 
-    Window(SDL_Window *window, SDL_Renderer *renderer, int width,
+    Window(SDL_Window *window, int width,
            int height, std::uint32_t windowFlags)
-        : window_(window), renderer_(renderer), width_(0), height_(0),
+        : window_(window), width_(width),
+          height_(height),
           windowFlags_(windowFlags)
     {
     }

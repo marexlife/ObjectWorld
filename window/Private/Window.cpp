@@ -10,32 +10,22 @@
 
 namespace oworld
 {
-std::expected<std::unique_ptr<Window>, std::string_view> Window::
-    TryCreate(int width, int height, std::uint32_t windowFlags)
+std::expected<std::unique_ptr<Window>,
+              std::string_view>
+Window::TryCreate(int width, int height,
+                  std::uint32_t windowFlags)
 {
-    SDL_Window *window = nullptr;
-    SDL_Renderer *renderer = nullptr;
+    SDL_Init(0);
 
-    int intiErr = SDL_Init(SDL_INIT_EVENTS);
-
-    if (intiErr != 0)
-    {
-        return std::unexpected(SDL_GetError());
-    }
-
-    int creationErr = SDL_CreateWindowAndRenderer(
-        width, height, windowFlags, &window, &renderer);
-
-    if (creationErr != 0)
-    {
-        return std::unexpected(SDL_GetError());
-    }
+    SDL_Window *window = SDL_CreateWindow(
+        "Window", 0, 0, 1000, 500, 0);
 
     SDL_ShowWindow(window);
 
-    return std::expected<std::unique_ptr<Window>, std::string_view>(
-        std::unique_ptr<Window>(new Window(window, renderer, width,
-                                           height, windowFlags)));
+    return std::expected<std::unique_ptr<Window>,
+                         std::string_view>(
+        std::unique_ptr<Window>(new Window(
+            window, width, height, windowFlags)));
 }
 
 void Window::Emerge()
@@ -44,26 +34,13 @@ void Window::Emerge()
 
 void Window::Tick()
 {
-    SDL_Event *event = nullptr;
+    SDL_UpdateWindowSurface(window_);
 
-    std::println("Window tick");
-
-    while (SDL_PollEvent(event))
+    if (SDL_Event event; SDL_PollEvent(&event))
     {
-        if (event == nullptr)
+        if (event.type == SDL_QUIT)
         {
-            std::println("event is NULL!");
-
-            continue;
-        }
-
-        switch (event->type)
-        {
-        case SDL_QUIT:
             windowShouldClose_.Fire();
-            break;
-        default:
-            break;
         }
     }
 }
