@@ -1,5 +1,5 @@
 {
-    "name": "ObjectWorld",
+    "name": "object-world",
     "dependencies": [
         "sdl2",
         "glad",
