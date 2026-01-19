@@ -18,25 +18,30 @@ class Events
     }
 };
 
-template <typename Ret, typename... Args> class Event
+template <typename Ret, typename... Args>
+class Event
 {
   public:
-    void Subscribe(std::move_only_function<Ret(Args...)> &&f)
+    void Subscribe(
+        std::move_only_function<Ret(Args...)> &&f)
     {
-        funcs_.emplace_back(std::move(f));
+        functors_.emplace_back(std::move(f));
     }
 
     void Fire()
     {
-        for (std::move_only_function<void()> &f : funcs_)
+        for (std::move_only_function<void()>
+                 &functor : functors_)
         {
-            f();
+            functor();
         }
     }
 
     virtual ~Event() = default;
 
   private:
-    std::vector<std::move_only_function<Ret(Args...)>> funcs_{};
+    std::vector<
+        std::move_only_function<Ret(Args...)>>
+        functors_{};
 };
 } // namespace oworld
