@@ -38,7 +38,7 @@ class Window final : public Object
     Window(const Window &) = delete;
     Window &operator=(const Window &) = delete;
 
-    ~Window() override;
+    virtual ~Window() override;
 
   private:
     SDL_Window *window_{};

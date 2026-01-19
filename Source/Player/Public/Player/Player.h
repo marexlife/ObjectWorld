@@ -6,10 +6,11 @@ namespace ObjectWorld
 {
 class Player final : public Object
 {
+  public:
+    virtual ~Player() override = default;
+
   private:
     virtual void Emerge() override;
     virtual void Tick() override;
-
-    virtual ~Player() override = default;
 };
 } // namespace ObjectWorld

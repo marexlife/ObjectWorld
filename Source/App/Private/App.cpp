@@ -1,9 +1,9 @@
 #include "App/App.h"
 #include "Object/Object.h"
 #include "Player/Player.h"
-#include "spdlog/spdlog.h"
 #include "Window/Window.h"
 #include "World/World.h"
+#include "spdlog/spdlog.h"
 #include <array>
 #include <expected>
 #include <memory>
