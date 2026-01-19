@@ -7,7 +7,7 @@ namespace ObjectWorld
 class Player final : public Object
 {
   private:
-    void Emerge() override;
-    void Tick() override;
+    virtual void Emerge() override;
+    virtual void Tick() override;
 };
 } // namespace ObjectWorld

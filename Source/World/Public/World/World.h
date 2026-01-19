@@ -13,7 +13,7 @@ class Player;
 class World final : public Object
 {
   public:
-    World() : events_{}
+    World()
     {
     }
 
@@ -38,12 +38,12 @@ class World final : public Object
     }
 
     virtual void Emerge() override;
-    void Tick() override;
+    virtual void Tick() override;
 
     World(const World &) = delete;
     World &operator=(const World &) = delete;
     World &operator=(World &&) = delete;
-    ~World() = default;
+    virtual ~World() override = default;
 
   private:
     std::vector<std::shared_ptr<Object>>

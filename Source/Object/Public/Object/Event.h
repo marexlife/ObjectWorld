@@ -8,13 +8,13 @@ template <typename Ret, typename... Args>
 class Event
 {
   public:
-    void Subscribe(
+    virtual void Subscribe(
         std::move_only_function<Ret(Args...)> &&f)
     {
         functors_.emplace_back(std::move(f));
     }
 
-    void Fire()
+    virtual void Fire()
     {
         for (std::move_only_function<void()>
                  &functor : functors_)

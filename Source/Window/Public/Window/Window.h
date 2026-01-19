@@ -24,7 +24,7 @@ class Window final : public Object
               std::uint32_t sdlFlags = 0,
               std::uint32_t windowFlags = 0);
 
-    void Tick() override;
+    virtual void Tick() override;
 
     void SubscribeWindowShouldClose(
         std::move_only_function<void()> &&f)
