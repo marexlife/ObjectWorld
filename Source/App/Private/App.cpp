@@ -12,7 +12,7 @@
 
 namespace ObjectWorld
 {
-void App::Run()
+void OApp::Run()
 {
     if (std::expected<std::unique_ptr<OWindow>,
                       std::string_view>
@@ -42,7 +42,7 @@ void App::Run()
     }
 }
 
-void App::EntityEvents(
+void OApp::EntityEvents(
     std::array<std::unique_ptr<OObject>, 2>
         &&events)
 {

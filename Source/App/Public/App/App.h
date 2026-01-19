@@ -1,12 +1,11 @@
 #pragma once
 
+#include "Object/Object.h"
 #include <memory>
 
 namespace ObjectWorld
 {
-class OObject;
-
-class App final
+class OApp final : public OObject
 {
   public:
     constexpr static int Width = 1800;
@@ -14,9 +13,9 @@ class App final
     constexpr static int X = Width / 5;
     constexpr static int Y = Height / 5;
 
-    [[nodiscard]] static App Create()
+    [[nodiscard]] static OApp Create()
     {
-        return App();
+        return OApp();
     }
 
     void Run();
@@ -25,10 +24,12 @@ class App final
         std::array<std::unique_ptr<OObject>, 2>
             &&events);
 
+    virtual ~OApp() override = default;
+
   private:
     bool shouldRun_ = true;
 
-    App()
+    OApp()
     {
     }
 };
