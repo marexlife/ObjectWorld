@@ -26,13 +26,14 @@ class OWindow final : public OObject
     virtual void Tick() override;
 
     void SubscribeWindowShouldClose(
-        std::move_only_function<void()> &&f)
+        std::move_only_function<void()> &&functor)
     {
         windowShouldClose_.Subscribe(
-            std::move(f));
+            std::move(functor));
     }
 
     OWindow(OWindow &&) = default;
+
     OWindow &operator=(OWindow &&) = delete;
     OWindow(const OWindow &) = delete;
     OWindow &operator=(const OWindow &) = delete;
