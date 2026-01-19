@@ -4,7 +4,6 @@
 #include <expected>
 #include <functional>
 #include <memory>
-#include <string_view>
 
 #include "Object/Event.h"
 #include "Object/Object.h"
@@ -19,7 +18,7 @@ class Window final : public Object
   public:
     [[nodiscard]] static std::expected<
         std::unique_ptr<Window>, std::string>
-    TryCreate(std::string_view windowName, int x,
+    TryCreate(std::string windowName, int x,
               int y, int width, int height,
               std::uint32_t sdlFlags = 0,
               std::uint32_t windowFlags = 0);

@@ -8,15 +8,13 @@
 #include <format>
 #include <memory>
 #include <string>
-#include <string_view>
 
 namespace ObjectWorld
 {
 std::expected<std::unique_ptr<Window>,
               std::string>
-Window::TryCreate(std::string_view windowName,
-                  int x, int y, int width,
-                  int height,
+Window::TryCreate(std::string windowName, int x,
+                  int y, int width, int height,
                   std::uint32_t sdlFlags,
                   std::uint32_t windowFlags)
 {
