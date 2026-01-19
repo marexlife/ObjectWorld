@@ -10,6 +10,7 @@ class OObject
     OObject()
     {
     }
+
     /// runs once at emerging of the object
     virtual void Emerge()
     {
