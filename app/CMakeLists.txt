@@ -12,6 +12,11 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     world
 )
 
+find_package(spdlog CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    spdlog::spdlog_header_only
+)
+
 target_include_directories(${PROJECT_NAME} PUBLIC
     Public
 )

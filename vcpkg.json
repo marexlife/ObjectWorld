@@ -2,6 +2,7 @@
     "name": "oworld",
     "dependencies": [
         "sdl2",
-        "glad"
+        "glad",
+        "spdlog"
     ]
 }

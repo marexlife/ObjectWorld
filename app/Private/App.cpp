@@ -1,11 +1,11 @@
 #include "app/App.h"
 #include "object/Events.h"
+#include "spdlog/spdlog.h"
 #include "window/Window.h"
 #include "world/World.h"
 #include <array>
 #include <expected>
 #include <memory>
-#include <span>
 #include <string_view>
 #include <utility>
 
@@ -26,6 +26,11 @@ void App::Run()
             std::make_unique<World>(),
             std::move(*windowResult),
         });
+    }
+    else
+    {
+        spdlog::error(std::format(
+            "{}", windowResult.error()));
     }
 }
 
