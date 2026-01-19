@@ -1,5 +1,8 @@
 #pragma once
 
+#include <memory>
+#include <span>
+#include <vector>
 namespace ObjectWorld
 {
 class Events;
@@ -18,6 +21,10 @@ class App final
     }
 
     void Run();
+
+    void EntityEvents(
+        std::array<std::unique_ptr<Events>, 2>
+            &&events);
 
   private:
     bool shouldRun_ = true;

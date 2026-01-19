@@ -1,9 +1,13 @@
 #include "app/App.h"
+#include "object/Events.h"
 #include "window/Window.h"
 #include "world/World.h"
+#include <array>
 #include <expected>
 #include <memory>
+#include <span>
 #include <string_view>
+#include <utility>
 
 namespace ObjectWorld
 {
@@ -14,23 +18,39 @@ void App::Run()
             windowResult = Window::TryCreate(
                 "Window", X, Y, Width, Height))
     {
-        std::unique_ptr<Window> &window =
-            *windowResult;
-        std::unique_ptr<World> world =
+        std::unique_ptr<Events> world =
             std::make_unique<World>();
 
-        window->Emerge();
-        world->Emerge();
+        (*windowResult)
+            ->SubscribeWindowShouldClose(
+                [&] { shouldRun_ = false; });
 
-        window->SubscribeWindowShouldClose(
-            [&] { shouldRun_ = false; });
+        std::array<std::unique_ptr<Events>, 2>
+            events{
+                std::move(*windowResult),
+                std::move(world),
+            };
 
-        while (shouldRun_)
-        {
-            window->Tick();
-            world->Tick();
-        }
+        EntityEvents(std::move(events));
     }
 }
 
+void App::EntityEvents(
+    std::array<std::unique_ptr<Events>, 2>
+        &&events)
+{
+    for (std::unique_ptr<Events> &event : events)
+    {
+        event->Emerge();
+    }
+
+    while (shouldRun_)
+    {
+        for (std::unique_ptr<Events> &event :
+             events)
+        {
+            event->Tick();
+        }
+    }
+}
 } // namespace ObjectWorld
