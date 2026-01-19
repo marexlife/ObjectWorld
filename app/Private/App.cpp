@@ -22,10 +22,13 @@ void App::Run()
             ->SubscribeWindowShouldClose(
                 [&] { shouldRun_ = false; });
 
-        EntityEvents({
-            std::make_unique<World>(),
-            std::move(*windowResult),
-        });
+        std::array<std::unique_ptr<Events>, 2>
+            events{
+                std::make_unique<World>(),
+                std::move(*windowResult),
+            };
+
+        EntityEvents(std::move(events));
     }
     else
     {
