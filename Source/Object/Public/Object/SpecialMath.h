@@ -35,9 +35,17 @@ struct TVec3 final
                      z * other.z);
     }
 
-    [[nodiscard]] TVec3 operator/(
-        const TVec3 &other)
+    [[nodiscard]] std::expected<void,
+                                std::string_view>
+    operator/(const TVec3 &other)
     {
+        if (other.x == 0 || other.y == 0 ||
+            other.z == 0) [[unlikely]]
+        {
+            return std::unexpected(
+                "division by zero");
+        }
+
         return TVec3(x / other.x, y / other.y,
                      z / other.z);
     }
@@ -82,7 +90,7 @@ struct TVec3 final
     operator/=(const TVec3 &other)
     {
         if (other.x == 0 || other.y == 0 ||
-            other.z == 0)
+            other.z == 0) [[unlikely]]
         {
             return std::unexpected(
                 "division by zero");
