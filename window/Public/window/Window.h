@@ -5,7 +5,6 @@
 #include <functional>
 #include <memory>
 #include <string_view>
-#include <system_error>
 
 #include "object/Events.h"
 
