@@ -5,7 +5,7 @@
 #include <memory>
 #include <string_view>
 
-namespace oworld
+namespace ObjectWorld
 {
 void App::Run()
 {

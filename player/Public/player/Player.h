@@ -2,7 +2,7 @@
 
 #include "object/Events.h"
 
-namespace oworld
+namespace ObjectWorld
 {
 class Player final : public Events
 {
@@ -10,4 +10,4 @@ class Player final : public Events
     void Emerge() override;
     void Tick() override;
 };
-} // namespace oworld
+} // namespace ObjectWorld

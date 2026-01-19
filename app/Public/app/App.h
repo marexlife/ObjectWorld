@@ -1,6 +1,6 @@
 #pragma once
 
-namespace oworld
+namespace ObjectWorld
 {
 class Events;
 
@@ -19,4 +19,4 @@ class App final
     {
     }
 };
-} // namespace oworld
+} // namespace ObjectWorld

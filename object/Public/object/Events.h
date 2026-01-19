@@ -2,7 +2,8 @@
 
 #include <functional>
 #include <vector>
-namespace oworld
+
+namespace ObjectWorld
 {
 class Events
 {
@@ -44,4 +45,4 @@ class Event
         std::move_only_function<Ret(Args...)>>
         functors_{};
 };
-} // namespace oworld
+} // namespace ObjectWorld

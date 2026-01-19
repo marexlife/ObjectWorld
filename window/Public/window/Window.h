@@ -11,7 +11,7 @@
 struct SDL_Window;
 struct SDL_Renderer;
 
-namespace oworld
+namespace ObjectWorld
 {
 class Window final : public Events
 {

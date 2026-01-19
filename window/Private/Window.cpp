@@ -9,7 +9,7 @@
 #include <memory>
 #include <string_view>
 
-namespace oworld
+namespace ObjectWorld
 {
 std::expected<std::unique_ptr<Window>,
               std::string>

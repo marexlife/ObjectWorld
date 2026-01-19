@@ -6,7 +6,7 @@
 #include <utility>
 #include <vector>
 
-namespace oworld
+namespace ObjectWorld
 {
 class Player;
 

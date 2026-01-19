@@ -1,6 +1,6 @@
 #include "player/Player.h"
 
-namespace oworld
+namespace ObjectWorld
 {
 void Player::Emerge()
 {
@@ -9,4 +9,4 @@ void Player::Emerge()
 void Player::Tick()
 {
 }
-} // namespace oworld
+} // namespace ObjectWorld

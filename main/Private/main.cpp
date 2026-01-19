@@ -8,5 +8,5 @@
 
 int main()
 {
-    oworld::App::Create().Run();
+    ObjectWorld::App::Create().Run();
 }

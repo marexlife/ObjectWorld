@@ -2,13 +2,14 @@
 
 #include <string_view>
 
-namespace oworld
+namespace ObjectWorld
 {
 class Name
 {
   public:
-    [[nodiscard]] virtual std::string_view GetObjectName() const = 0;
+    [[nodiscard]] virtual std::string_view
+    GetObjectName() const = 0;
 
     virtual ~Name() = default;
 };
-} // namespace oworld
+} // namespace ObjectWorld
