@@ -5,6 +5,7 @@
 #include <functional>
 #include <memory>
 #include <string_view>
+#include <system_error>
 
 #include "object/Events.h"
 
@@ -17,9 +18,10 @@ class Window final : public Events
 {
   public:
     [[nodiscard]] static std::expected<
-        std::unique_ptr<Window>, std::string_view>
+        std::unique_ptr<Window>, std::string>
     TryCreate(std::string_view windowName, int x,
               int y, int width, int height,
+              std::uint32_t sdlFlags = 0,
               std::uint32_t windowFlags = 0);
 
     void Emerge() override;
@@ -46,16 +48,13 @@ class Window final : public Events
     int y_{};
     int width_{};
     int height_{};
-    std::uint32_t windowFlags_{};
 
     Event<void> windowShouldClose_{};
 
     Window(SDL_Window *window, int x, int y,
-           int width, int height,
-           std::uint32_t windowFlags)
+           int width, int height)
         : x_(x), y_(y), window_(window),
-          width_(width), height_(height),
-          windowFlags_(windowFlags)
+          width_(width), height_(height)
     {
     }
 };

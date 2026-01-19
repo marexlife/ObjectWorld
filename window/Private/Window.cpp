@@ -5,31 +5,46 @@
 #include <SDL_render.h>
 #include <SDL_video.h>
 #include <expected>
+#include <format>
 #include <memory>
 #include <string_view>
 
 namespace oworld
 {
 std::expected<std::unique_ptr<Window>,
-              std::string_view>
+              std::string>
 Window::TryCreate(std::string_view windowName,
                   int x, int y, int width,
                   int height,
+                  std::uint32_t sdlFlags,
                   std::uint32_t windowFlags)
 {
-    SDL_Init(0);
+    int initErrorCode = SDL_Init(sdlFlags);
+
+    if (initErrorCode != 0)
+    {
+        return std::unexpected(
+            std::format("Failed to init SDL with "
+                        "error code: {}",
+                        initErrorCode));
+    }
 
     SDL_Window *window = SDL_CreateWindow(
         windowName.data(), x, y, width, height,
         windowFlags);
 
+    if (window == nullptr)
+    {
+        return std::unexpected(
+            "failed to create Window");
+    }
+
     SDL_ShowWindow(window);
 
     return std::expected<std::unique_ptr<Window>,
-                         std::string_view>(
-        std::unique_ptr<Window>(
-            new Window(window, x, y, width,
-                       height, windowFlags)));
+                         std::string>(
+        std::unique_ptr<Window>(new Window(
+            window, x, y, width, height)));
 }
 
 void Window::Emerge()
