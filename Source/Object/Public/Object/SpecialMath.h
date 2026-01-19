@@ -57,7 +57,7 @@ struct TVec3 final
         z = other.z;
     }
 
-    TVec3 &operator=(const TVec3 &other)
+    void operator=(const TVec3 &other)
     {
         x = other.x;
         y = other.y;
