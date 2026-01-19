@@ -51,11 +51,11 @@ void Window::Tick()
 {
     SDL_UpdateWindowSurface(window_);
 
-    SDL_Event sdlEvent_{};
+    SDL_Event sdlEvent{};
 
-    if (SDL_PollEvent(&sdlEvent_))
+    if (SDL_PollEvent(&sdlEvent))
     {
-        switch (sdlEvent_.type)
+        switch (sdlEvent.type)
         {
         case SDL_QUIT:
             windowShouldClose_.Fire();
