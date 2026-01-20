@@ -4,14 +4,14 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Release)
 
-set(CUSTOM_FLAGS
-    -O3
-)
-
-if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR
-    CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR
-    CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-    set(${CUSTOM_FLAGS}
+if(MSVC)
+    set(CUSTOM_FLAGS 
+        /O3
+        /W4
+    )
+else()
+    set(CUSTOM_FLAGS
+        -O3
         -Wall
         -Wextra
         -Wpedantic
@@ -20,4 +20,3 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR
         -Werror
     )
 endif()
-
