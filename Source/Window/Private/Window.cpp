@@ -1,6 +1,8 @@
 #include "Window/Window.h"
+#include <exception>
 #include <expected>
 #include <memory>
+#include <print>
 #include <string>
 
 namespace ObjectWorld
@@ -12,8 +14,8 @@ OWindow::TryCreate(std::string windowName, int x,
                    std::uint32_t sdlFlags,
                    std::uint32_t windowFlags)
 {
-    return std::expected<std::unique_ptr<OWindow>,
-                         std::string>();
+    std::println("unimplemented!");
+    std::terminate();
 }
 
 void OWindow::Tick()
