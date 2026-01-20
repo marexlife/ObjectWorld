@@ -39,7 +39,7 @@ class OObject
 
   private:
     SVector pos_;
-    SRotator rot_;
-    SVector sca_;
+    // SRotator rot_;
+    // SVector sca_;
 };
 } // namespace ObjectWorld

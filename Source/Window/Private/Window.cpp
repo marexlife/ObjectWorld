@@ -9,10 +9,11 @@ namespace ObjectWorld
 {
 std::expected<std::unique_ptr<OWindow>,
               std::string>
-OWindow::TryCreate(std::string windowName, int x,
-                   int y, int width, int height,
-                   std::uint32_t sdlFlags,
-                   std::uint32_t windowFlags)
+OWindow::TryCreate(std::string /*windowName*/,
+                   int /*x*/, int /*y*/,
+                   int /*width*/, int /*height*/,
+                   std::uint32_t /*sdlFlags*/,
+                   std::uint32_t /*windowFlags*/)
 {
     std::println("unimplemented!");
     std::terminate();

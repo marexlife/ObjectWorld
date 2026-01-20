@@ -16,7 +16,6 @@ else()
         -Wextra
         -Wpedantic
         -Wconversion
-        -Wnrvo
         -Werror
     )
 endif()

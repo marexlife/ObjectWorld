@@ -40,7 +40,8 @@ class OWindow final : public OObject
   private:
     OEvent<void> windowShouldClose_{};
 
-    OWindow(int x, int y, int width, int height)
+    OWindow(int /*x*/, int /*y*/, int /*width*/,
+            int /*height*/)
     {
     }
 };
