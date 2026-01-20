@@ -1,11 +1,5 @@
 #include "Window/Window.h"
-#include "SDL2/SDL.h"
-#include "SDL_events.h"
-#include <SDL_error.h>
-#include <SDL_render.h>
-#include <SDL_video.h>
 #include <expected>
-#include <format>
 #include <memory>
 #include <string>
 
@@ -18,12 +12,12 @@ OWindow::TryCreate(std::string windowName, int x,
                    std::uint32_t sdlFlags,
                    std::uint32_t windowFlags)
 {
- 
+    return std::expected<std::unique_ptr<OWindow>,
+                         std::string>();
 }
 
 void OWindow::Tick()
 {
-
 }
 
 OWindow::~OWindow()
