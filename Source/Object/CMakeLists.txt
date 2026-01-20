@@ -11,3 +11,7 @@ add_library(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PUBLIC
     Public
 )
+
+target_compile_options(${PROJECT_NAME} PUBLIC
+    ${CUSTOM_FLAGS}
+)

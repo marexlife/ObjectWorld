@@ -21,3 +21,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
     $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
 )
+
+target_compile_options(${PROJECT_NAME} PUBLIC
+    ${CUSTOM_FLAGS}
+)

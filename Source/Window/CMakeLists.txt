@@ -16,3 +16,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME} PUBLIC
     Object
 )
+
+target_compile_options(${PROJECT_NAME} PUBLIC
+    ${CUSTOM_FLAGS}
+)
