@@ -4,10 +4,10 @@
 
 namespace ObjectWorld
 {
-class CObject
+class Object
 {
   public:
-    CObject()
+    Object()
     {
     }
 
@@ -33,7 +33,7 @@ class CObject
     {
     }
 
-    virtual ~CObject()
+    virtual ~Object()
     {
     }
 

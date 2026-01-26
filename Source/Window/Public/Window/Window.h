@@ -10,7 +10,7 @@
 
 namespace ObjectWorld
 {
-class CWindow final : public CObject
+class CWindow final : public Object
 {
   public:
     [[nodiscard]] static std::expected<
@@ -38,7 +38,7 @@ class CWindow final : public CObject
     virtual ~CWindow() override;
 
   private:
-    OEvent<void> windowShouldClose_{};
+    Event<void> windowShouldClose_{};
 
     CWindow(int /*x*/, int /*y*/, int /*width*/,
             int /*height*/)

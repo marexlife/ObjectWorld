@@ -1,6 +1,9 @@
 #pragma once
 
+#include <exception>
 #include <expected>
+#include <print>
+#include <stdexcept>
 #include <string_view>
 #include <type_traits>
 
@@ -8,100 +11,93 @@ namespace ObjectWorld
 {
 template <typename NumType>
     requires std::is_arithmetic_v<NumType>
-struct TVector final
+struct Vector final
 {
-    explicit TVector()
+    explicit Vector()
     {
     }
 
-    [[nodiscard]] TVector operator+(
-        const TVector &other)
+    [[nodiscard]] Vector operator+(
+        const Vector &other)
     {
-        return TVector(x + other.x, y + other.y,
-                       z + other.z);
+        return Vector(x + other.x, y + other.y,
+                      z + other.z);
     }
 
-    [[nodiscard]] TVector operator-(
-        const TVector &other)
+    [[nodiscard]] Vector operator-(
+        const Vector &other)
     {
-        return TVector(x - other.x, y - other.y,
-                       z - other.z);
+        return Vector(x - other.x, y - other.y,
+                      z - other.z);
     }
 
-    [[nodiscard]] TVector operator*(
-        const TVector &other)
+    [[nodiscard]] Vector operator*(
+        const Vector &other)
     {
-        return TVector(x * other.x, y * other.y,
-                       z * other.z);
+        return Vector(x * other.x, y * other.y,
+                      z * other.z);
     }
 
-    [[nodiscard]] std::expected<void,
-                                std::string_view>
-    operator/(const TVector &other)
+    Vector operator/(const Vector &other)
     {
         if (other.x == 0 || other.y == 0 ||
             other.z == 0) [[unlikely]]
         {
-            return std::unexpected(
-                "division by zero");
+            std::println("division by zero");
+            std::terminate();
         }
 
-        return TVector(x / other.x, y / other.y,
-                       z / other.z);
+        return Vector(x / other.x, y / other.y,
+                      z / other.z);
     }
 
-    explicit TVector(const TVector &other)
+    explicit Vector(const Vector &other)
     {
         x = other.x;
         y = other.y;
         z = other.z;
     }
 
-    void operator=(const TVector &other)
+    void operator=(const Vector &other)
     {
         x = other.x;
         y = other.y;
         z = other.z;
     }
 
-    void operator+=(const TVector &other)
+    void operator+=(const Vector &other)
     {
         x += other.x;
         y += other.y;
         z += other.z;
     }
 
-    void operator-=(const TVector &other)
+    void operator-=(const Vector &other)
     {
         x -= other.x;
         y -= other.y;
         z -= other.z;
     }
 
-    void operator*=(const TVector &other)
+    void operator*=(const Vector &other)
     {
         x *= other.x;
         y *= other.y;
         z *= other.z;
     }
 
-    [[nodiscard]] std::expected<void,
-                                std::string_view>
-    operator/=(const TVector &other)
+    void operator/=(const Vector &other)
     {
         if (other.x == 0 || other.y == 0 ||
             other.z == 0) [[unlikely]]
         {
-            return std::unexpected(
+            throw std::runtime_error(
                 "division by zero");
         }
 
         x /= other.x;
         y /= other.y;
         z /= other.z;
-
-        return std::expected<void,
-                             std::string_view>();
     }
 
     NumType x{};
@@ -109,7 +105,7 @@ struct TVector final
     NumType z{};
 };
 
-using SVector = TVector<float>;
+using SVector = Vector<float>;
 
 template <typename NumType>
     requires std::is_arithmetic_v<NumType>

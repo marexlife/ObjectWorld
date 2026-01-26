@@ -4,12 +4,12 @@
 
 namespace ObjectWorld
 {
-class IName
+class Name
 {
   public:
     [[nodiscard]] virtual std::string_view
     GetObjectName() const = 0;
 
-    virtual ~IName() = default;
+    virtual ~Name() = default;
 };
 } // namespace ObjectWorld

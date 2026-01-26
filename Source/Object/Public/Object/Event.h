@@ -5,7 +5,7 @@
 namespace ObjectWorld
 {
 template <typename Ret, typename... Args>
-class OEvent
+class Event
 {
   public:
     virtual void Subscribe(
@@ -23,7 +23,7 @@ class OEvent
         }
     }
 
-    virtual ~OEvent() = default;
+    virtual ~Event() = default;
 
   private:
     std::vector<

@@ -5,18 +5,18 @@
 
 namespace ObjectWorld
 {
-void CWorld::Emerge()
+void World::Emerge()
 {
-    for (std::shared_ptr<CObject> &object :
+    for (std::shared_ptr<Object> &object :
          events_)
     {
         object->Emerge();
     }
 }
 
-void CWorld::Tick()
+void World::Tick()
 {
-    for (std::shared_ptr<CObject> &object :
+    for (std::shared_ptr<Object> &object :
          events_)
     {
         object->Tick();

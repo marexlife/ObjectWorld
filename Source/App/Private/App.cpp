@@ -12,7 +12,7 @@
 
 namespace ObjectWorld
 {
-void CApp::Run()
+void App::Run()
 {
     std::expected<std::unique_ptr<CWindow>,
                   std::string_view>
@@ -21,16 +21,16 @@ void CApp::Run()
 
     if (windowResult)
     {
-        std::unique_ptr<CWorld> world =
-            std::make_unique<CWorld>();
+        std::unique_ptr<World> world =
+            std::make_unique<World>();
 
         (*windowResult)
             ->SubscribeWindowShouldClose(
                 [&] { shouldRun_ = false; });
 
-        world->AddObject<CPlayer>();
+        world->AddObject<Player>();
 
-        std::array<std::unique_ptr<CObject>, 2>
+        std::array<std::unique_ptr<Object>, 2>
             events{
                 std::move(world),
                 std::move(*windowResult),
@@ -44,18 +44,18 @@ void CApp::Run()
     }
 }
 
-void CApp::EntityEvents(
-    std::array<std::unique_ptr<CObject>, 2>
+void App::EntityEvents(
+    std::array<std::unique_ptr<Object>, 2>
         &&events)
 {
-    for (std::unique_ptr<CObject> &event : events)
+    for (std::unique_ptr<Object> &event : events)
     {
         event->Emerge();
     }
 
     while (shouldRun_)
     {
-        for (std::unique_ptr<CObject> &event :
+        for (std::unique_ptr<Object> &event :
              events)
         {
             event->Tick();
