@@ -2,11 +2,11 @@
 
 namespace ObjectWorld
 {
-void Player::Emerge()
+void CPlayer::Emerge()
 {
 }
 
-void Player::Tick()
+void CPlayer::Tick()
 {
 }
 } // namespace ObjectWorld

@@ -4,10 +4,10 @@
 
 namespace ObjectWorld
 {
-class Player final : public CObject
+class CPlayer final : public CObject
 {
   public:
-    virtual ~Player() override = default;
+    virtual ~CPlayer() override = default;
 
   private:
     virtual void Emerge() override;

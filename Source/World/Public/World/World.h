@@ -8,7 +8,7 @@
 
 namespace ObjectWorld
 {
-class Player;
+class CPlayer;
 
 class CWorld final : public CObject
 {

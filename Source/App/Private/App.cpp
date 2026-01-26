@@ -14,10 +14,12 @@ namespace ObjectWorld
 {
 void CApp::Run()
 {
-    if (std::expected<std::unique_ptr<CWindow>,
-                      std::string_view>
-            windowResult = CWindow::TryCreate(
-                "Window", X, Y, Width, Height))
+    std::expected<std::unique_ptr<CWindow>,
+                  std::string_view>
+        windowResult = CWindow::TryCreate(
+            "Window", X, Y, Width, Height);
+
+    if (windowResult)
     {
         std::unique_ptr<CWorld> world =
             std::make_unique<CWorld>();
@@ -26,7 +28,7 @@ void CApp::Run()
             ->SubscribeWindowShouldClose(
                 [&] { shouldRun_ = false; });
 
-        world->AddObject<Player>();
+        world->AddObject<CPlayer>();
 
         std::array<std::unique_ptr<CObject>, 2>
             events{
