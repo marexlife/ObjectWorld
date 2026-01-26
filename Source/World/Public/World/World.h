@@ -10,14 +10,14 @@ namespace ObjectWorld
 {
 class Player;
 
-class World final : public OObject
+class CWorld final : public CObject
 {
   public:
-    World()
+    CWorld()
     {
     }
 
-    World(World &&) = default;
+    CWorld(CWorld &&) = default;
 
     /// A chainable method for creating a new
     /// object and adding it to the world
@@ -28,8 +28,8 @@ class World final : public OObject
     /// methods on or store it.
     template <typename Tp, typename... Args>
         requires std::destructible<Tp> &&
-                 std::derived_from<Tp, OObject>
-    World &AddObject(Args... args)
+                 std::derived_from<Tp, CObject>
+    CWorld &AddObject(Args... args)
     {
         events_.emplace_back(std::make_shared<Tp>(
             std::forward<Args>(args)...));
@@ -40,13 +40,13 @@ class World final : public OObject
     virtual void Emerge() override;
     virtual void Tick() override;
 
-    World(const World &) = delete;
-    World &operator=(const World &) = delete;
-    World &operator=(World &&) = delete;
-    virtual ~World() override = default;
+    CWorld(const CWorld &) = delete;
+    CWorld &operator=(const CWorld &) = delete;
+    CWorld &operator=(CWorld &&) = delete;
+    virtual ~CWorld() override = default;
 
   private:
-    std::vector<std::shared_ptr<OObject>>
+    std::vector<std::shared_ptr<CObject>>
         events_{};
 };
 } // namespace ObjectWorld

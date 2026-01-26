@@ -4,7 +4,7 @@
 
 namespace ObjectWorld
 {
-class Player final : public OObject
+class Player final : public CObject
 {
   public:
     virtual ~Player() override = default;

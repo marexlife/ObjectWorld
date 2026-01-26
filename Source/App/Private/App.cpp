@@ -3,24 +3,24 @@
 #include "Player/Player.h"
 #include "Window/Window.h"
 #include "World/World.h"
-#include "spdlog/spdlog.h"
 #include <array>
 #include <expected>
 #include <memory>
+#include <print>
 #include <string_view>
 #include <utility>
 
 namespace ObjectWorld
 {
-void OApp::Run()
+void CApp::Run()
 {
-    if (std::expected<std::unique_ptr<OWindow>,
+    if (std::expected<std::unique_ptr<CWindow>,
                       std::string_view>
-            windowResult = OWindow::TryCreate(
+            windowResult = CWindow::TryCreate(
                 "Window", X, Y, Width, Height))
     {
-        std::unique_ptr<World> world =
-            std::make_unique<World>();
+        std::unique_ptr<CWorld> world =
+            std::make_unique<CWorld>();
 
         (*windowResult)
             ->SubscribeWindowShouldClose(
@@ -28,7 +28,7 @@ void OApp::Run()
 
         world->AddObject<Player>();
 
-        std::array<std::unique_ptr<OObject>, 2>
+        std::array<std::unique_ptr<CObject>, 2>
             events{
                 std::move(world),
                 std::move(*windowResult),
@@ -38,22 +38,22 @@ void OApp::Run()
     }
     else
     {
-        spdlog::error(windowResult.error());
+        std::println("{}", windowResult.error());
     }
 }
 
-void OApp::EntityEvents(
-    std::array<std::unique_ptr<OObject>, 2>
+void CApp::EntityEvents(
+    std::array<std::unique_ptr<CObject>, 2>
         &&events)
 {
-    for (std::unique_ptr<OObject> &event : events)
+    for (std::unique_ptr<CObject> &event : events)
     {
         event->Emerge();
     }
 
     while (shouldRun_)
     {
-        for (std::unique_ptr<OObject> &event :
+        for (std::unique_ptr<CObject> &event :
              events)
         {
             event->Tick();

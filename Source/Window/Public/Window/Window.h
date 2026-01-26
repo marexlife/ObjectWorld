@@ -10,11 +10,11 @@
 
 namespace ObjectWorld
 {
-class OWindow final : public OObject
+class CWindow final : public CObject
 {
   public:
     [[nodiscard]] static std::expected<
-        std::unique_ptr<OWindow>, std::string>
+        std::unique_ptr<CWindow>, std::string>
     TryCreate(std::string windowName, int x,
               int y, int width, int height,
               std::uint32_t sdlFlags = 0,
@@ -29,18 +29,18 @@ class OWindow final : public OObject
             std::move(functor));
     }
 
-    OWindow(OWindow &&) = default;
+    CWindow(CWindow &&) = default;
 
-    OWindow &operator=(OWindow &&) = delete;
-    OWindow(const OWindow &) = delete;
-    OWindow &operator=(const OWindow &) = delete;
+    CWindow &operator=(CWindow &&) = delete;
+    CWindow(const CWindow &) = delete;
+    CWindow &operator=(const CWindow &) = delete;
 
-    virtual ~OWindow() override;
+    virtual ~CWindow() override;
 
   private:
     OEvent<void> windowShouldClose_{};
 
-    OWindow(int /*x*/, int /*y*/, int /*width*/,
+    CWindow(int /*x*/, int /*y*/, int /*width*/,
             int /*height*/)
     {
     }

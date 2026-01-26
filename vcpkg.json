@@ -1,7 +1,7 @@
 {
     "name": "object-world",
     "dependencies": [
-        "dawn",
-        "spdlog"
+        "sdl2",
+        "dawn"
     ]
 }

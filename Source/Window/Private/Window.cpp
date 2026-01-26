@@ -7,9 +7,9 @@
 
 namespace ObjectWorld
 {
-std::expected<std::unique_ptr<OWindow>,
+std::expected<std::unique_ptr<CWindow>,
               std::string>
-OWindow::TryCreate(std::string /*windowName*/,
+CWindow::TryCreate(std::string /*windowName*/,
                    int /*x*/, int /*y*/,
                    int /*width*/, int /*height*/,
                    std::uint32_t /*sdlFlags*/,
@@ -19,11 +19,11 @@ OWindow::TryCreate(std::string /*windowName*/,
     std::terminate();
 }
 
-void OWindow::Tick()
+void CWindow::Tick()
 {
 }
 
-OWindow::~OWindow()
+CWindow::~CWindow()
 {
 }
 } // namespace ObjectWorld

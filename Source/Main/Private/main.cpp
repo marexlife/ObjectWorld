@@ -3,5 +3,5 @@
 
 int main()
 {
-    ObjectWorld::OApp::Create().Run();
+    ObjectWorld::CApp::Create().Run();
 }

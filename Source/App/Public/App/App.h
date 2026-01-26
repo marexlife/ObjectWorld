@@ -5,7 +5,7 @@
 
 namespace ObjectWorld
 {
-class OApp final : public OObject
+class CApp final : public CObject
 {
   public:
     constexpr static int Width = 1800;
@@ -13,23 +13,23 @@ class OApp final : public OObject
     constexpr static int X = Width / 5;
     constexpr static int Y = Height / 5;
 
-    [[nodiscard]] static OApp Create()
+    [[nodiscard]] static CApp Create()
     {
-        return OApp();
+        return CApp();
     }
 
     void Run();
 
     void EntityEvents(
-        std::array<std::unique_ptr<OObject>, 2>
+        std::array<std::unique_ptr<CObject>, 2>
             &&events);
 
-    virtual ~OApp() override = default;
+    virtual ~CApp() override = default;
 
   private:
     bool shouldRun_ = true;
 
-    OApp()
+    CApp()
     {
     }
 };
